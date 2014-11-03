@@ -1,0 +1,3 @@
+bind status D !@?rm %(file)
+bind main T !@git tag %(prompt) %(commit)
+bind status P !git push origin
