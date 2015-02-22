@@ -53,3 +53,6 @@ if which rbenv > /dev/null; then eval "$(rbenv init - zsh)"; fi
 
 #rust
 DYLD_LIBRARY_PATH=/usr/local/lib/rustlib/x86_64-apple-darwin/lib:$DYLD_LIBRARY_PATH
+
+#rbenv
+RBENV_ROOT=/usr/local/var/rbenv

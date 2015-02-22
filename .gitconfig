@@ -1,5 +1,7 @@
 [user]
-	name = jxs
+	name = João Oliveira
 	email = hello@jxs.pt
 [color]
 	ui = true
+[core]
+	excludesfile = /Users/jxs/.gitignore_global
