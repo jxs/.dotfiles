@@ -1,7 +1,9 @@
 [user]
-	name = João Oliveira
-	email = hello@jxs.pt
+        name = João Oliveira
+        email = hello@jxs.pt
 [color]
-	ui = true
+        ui = true
 [core]
-	excludesfile = /Users/jxs/.gitignore_global
+        excludesfile = /Users/jxs/.global_gitignore
+[color "diff"]
+        whitespace = red reverse
