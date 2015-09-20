@@ -52,7 +52,10 @@ zstyle ':completion:*' special-dirs true
 if which rbenv > /dev/null; then eval "$(rbenv init - zsh)"; fi
 
 #rust
-DYLD_LIBRARY_PATH=/usr/local/lib/rustlib/x86_64-apple-darwin/lib:$DYLD_LIBRARY_PATH
+export RUST_SRC_PATH=/Users/jxs/dev/jxs/racer/target/src/rustc-1.3.0/src
 
 #rbenv
 RBENV_ROOT=/usr/local/var/rbenv
+
+#z
+source `brew --prefix`/etc/profile.d/z.sh
