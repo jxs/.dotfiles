@@ -38,9 +38,8 @@ export PATH=/usr/local/bin:/usr/local/sbin:${PATH}
 #go
 export GOPATH=$HOME/.go
 export PATH=$PATH:$GOPATH/bin
+
 #virtualenvwrapper
-export WORKON_HOME=$HOME/.virtualenvs
-source /usr/local/bin/virtualenvwrapper.sh
 export VIRTUAL_ENV_DISABLE_PROMPT='1'
 export PYTHONDONTWRITEBYTECODE=1
 
@@ -57,5 +56,3 @@ export RUST_SRC_PATH=/Users/jxs/dev/jxs/racer/target/src/rustc-1.3.0/src
 #rbenv
 RBENV_ROOT=/usr/local/var/rbenv
 
-#z
-source `brew --prefix`/etc/profile.d/z.sh
