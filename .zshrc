@@ -6,6 +6,8 @@ ZSH=$HOME/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 export ZSH_THEME="jxs"
 export SHELL="/usr/local/bin/zsh"
+fpath+=~/.zfunc
+#
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
 
