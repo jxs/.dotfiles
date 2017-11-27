@@ -53,8 +53,9 @@ zstyle ':completion:*' special-dirs true
 if which rbenv > /dev/null; then eval "$(rbenv init - zsh)"; fi
 
 #rust
-export RUST_SRC_PATH=/Users/jxs/dev/jxs/racer/target/src/rustc-1.3.0/src
+export RUST_SRC_PATH=~/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src
 
 #rbenv
 RBENV_ROOT=/usr/local/var/rbenv
 
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"

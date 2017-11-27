@@ -5,5 +5,6 @@
         ui = true
 [core]
         excludesfile = /Users/jxs/.global_gitignore
+	editor = vim
 [color "diff"]
         whitespace = red reverse
