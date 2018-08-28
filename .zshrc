@@ -6,8 +6,6 @@ export ZSH_THEME="jxs"
 export SHELL="/usr/local/bin/zsh"
 fpath+=~/.zfunc
 
-CASE_SENSITIVE="true"
-
 plugins=(git osx zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
