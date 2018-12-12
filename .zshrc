@@ -14,6 +14,7 @@ export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=147'
 # Customize to your needs...
 alias ls='ls -G'
 alias ll='ls -hl'
+alias cat='bat'
 alias e='emacs -nw'
 #PATH
 export PATH=/usr/local/bin:/usr/local/sbin:${PATH}
