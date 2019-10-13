@@ -16,6 +16,8 @@ alias ls='ls -G'
 alias ll='ls -hl'
 alias cat='bat'
 alias e='emacs -nw'
+alias v='nvim'
+alias vim='nvim'
 #PATH
 export PATH=/usr/local/bin:/usr/local/sbin:${PATH}
 
@@ -24,10 +26,13 @@ export GOPATH=$HOME/.go
 export PATH=$PATH:$GOPATH/bin
 
 #editor
-export EDITOR='emacs -nw'
+export EDITOR='nvim'
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 zstyle ':completion:*' special-dirs true
 
 #rust
 export RUST_SRC_PATH=~/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src
+export CARGO_HOME=~/.cargo
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

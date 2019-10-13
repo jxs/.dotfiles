@@ -5,6 +5,8 @@
         ui = true
 [core]
         excludesfile = /Users/jxs/.global_gitignore
-	editor = vim
+	editor = nvim
 [color "diff"]
         whitespace = red reverse
+[url "https://"]
+	insteadOf = git://
