@@ -62,7 +62,7 @@ let mapleader = "\<C-x>"
 nnoremap <silent><leader>u :UndotreeToggle<CR><C-w>h
 " nmap  <Leader>w  <Plug>(easymotion-s)
 nnoremap <silent> <leader>b :Buffers<CR>
-nnoremap <silent> <leader>f :GFiles<CR>
+nnoremap <silent> <leader>f :GFiles -c -o<CR>
 nnoremap <silent> <leader>e :Files<CR>
 nnoremap <silent> <leader>c :bd<CR>
 nnoremap <silent> <Esc><Esc> :noh<CR><Esc>
