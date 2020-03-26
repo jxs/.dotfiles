@@ -62,7 +62,7 @@ let mapleader = "\<C-x>"
 nnoremap <silent><leader>u :UndotreeToggle<CR><C-w>h
 " nmap  <Leader>w  <Plug>(easymotion-s)
 nnoremap <silent> <leader>b :Buffers<CR>
-nnoremap <silent> <leader>f :GFiles -c -o<CR>
+nnoremap <silent> <leader>f :GFiles -c --others --exclude-standard<CR>
 nnoremap <silent> <leader>e :Files<CR>
 nnoremap <silent> <leader>c :bd<CR>
 nnoremap <silent> <leader>l :Rgz<CR>
@@ -81,9 +81,9 @@ autocmd BufWritePre * %s/\s\+$//e
 
 " Custom functions
 " ===================================================================
-function! RipgrepFzf(query, spec, fullscreen)
+function! RgFzf(query, spec, fullscreen)
     let git_root = system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
     let rg_command = printf("rg --column --line-number --no-heading --color=always  %s %s", a:query, git_root)
     call fzf#vim#grep(rg_command, 1, a:spec, a:fullscreen)
 endfunction
-command! -bang -nargs=* Rgz call RipgrepFzf(shellescape(<q-args>), {}, <bang>0)
+command! -bang -nargs=* Rgz call RgFzf(shellescape(<q-args>), {}, <bang>0)
