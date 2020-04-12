@@ -1,0 +1,9 @@
+configuration {
+    modi: "drun,window,combi,calc";
+    theme: "android_notification";
+    font: "hack 10";
+    show-icons: true;
+    matching: "fuzzy";
+    combi-modi: "window,drun,calc";
+    terminal: "konsole";
+}
