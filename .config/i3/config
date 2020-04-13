@@ -37,8 +37,7 @@ focus_on_window_activation focus
 #cycle between windows
 workspace_auto_back_and_forth yes
 
-# Use pactl to adjust volume in PulseAudio.
-# Pulse Audio controls
+# Alsa Audio controls
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 5%+ #increase sound volume
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 5%- #decrease sound volume
@@ -47,6 +46,15 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec brightnessctl s +10%
 bindsym XF86MonBrightnessDown exec brightnessctl s 10%-
+# screenshots
+bindsym Print exec --no-startup-id "spectacle"
+bindsym $mod+F1 [title="nvim"] focus
+bindsym $mod+F2 [title="Mozilla Firefox"] focus
+bindsym $mod+F3 [title="Telegram"] focus
+bindsym $mod+F4 exec --no-startup-id xdotool search --class Plex key space
+bindsym $mod+F5 exec --no-startup-id xdotool search --class Plex key Left
+bindsym $mod+F6 exec --no-startup-id xdotool search --class Plex key Right
+
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -129,10 +137,6 @@ bindsym $mod+8 workspace number $ws8
 bindsym $mod+9 workspace number $ws9
 bindsym $mod+0 workspace number $ws10
 
-bindsym $mod+F1 [title="nvim"] focus
-bindsym $mod+F2 [title="Mozilla Firefox"] focus
-bindsym $mod+F3 [title="Telegram"] focus
-
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
 bindsym $mod+Shift+2 move container to workspace number $ws2
@@ -144,7 +148,6 @@ bindsym $mod+Shift+7 move container to workspace number $ws7
 bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
-bindsym Print exec --no-startup-id "spectacle"
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
