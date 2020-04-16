@@ -61,7 +61,7 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec /usr/bin/konsole
-bindsym $mod+t exec /usr/bin/konsole
+bindsym $mod+t exec --no-startup-id xdotool search --name "Mozilla Firefox" key ctrl+t
 
 # kill focused window
 bindsym $mod+q kill
