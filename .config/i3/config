@@ -13,6 +13,9 @@
 exec xsetroot -solid "#1d1f21"
 set $mod Mod4
 
+# start libinput gestures
+exec --no-startup-init libinput-gestures-setup start
+
 #default workspace layout
 workspace_layout tabbed
 
@@ -22,10 +25,6 @@ title_align center
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font pango: Noto Mono 8
-
-# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
-# screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -155,6 +154,8 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Do you really want to exit?' -B 'Yes' 'i3-msg exit'"
+# lock
+bindsym $mod+Shift+l exec --no-startup-id ~/.config/i3/lock.sh
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
