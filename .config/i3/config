@@ -51,9 +51,9 @@ bindsym Print exec --no-startup-id "spectacle"
 bindsym $mod+F1 [title="nvim"] focus
 bindsym $mod+F2 [title="Mozilla Firefox"] focus
 bindsym $mod+F3 [title="Telegram"] focus
-bindsym $mod+F4 exec --no-startup-id xdotool search --class Plex key space
-bindsym $mod+F5 exec --no-startup-id xdotool search --class Plex key Left
-bindsym $mod+F6 exec --no-startup-id xdotool search --class Plex key Right
+bindsym $mod+F4 exec --no-startup-id playerctl --player=playerctld play-pause
+bindsym $mod+F5 exec --no-startup-id playerctl --player=playerctld previous
+bindsym $mod+F6 exec --no-startup-id playerctl --player=playerctld next
 
 
 # Use Mouse+$mod to drag floating windows to their wanted position
