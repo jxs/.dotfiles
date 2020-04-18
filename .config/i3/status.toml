@@ -5,7 +5,7 @@ name = "gruvbox-dark"
 [theme.overrides]
 idle_bg = "#1d1f21"
 idle_fg = "#b4b7b4"
-good_bg = "#0A4F72"
+good_bg = "#434c5e"
 
 
 [[block]]

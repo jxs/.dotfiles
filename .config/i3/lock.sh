@@ -11,7 +11,7 @@ for RES in $SR; do
 done
 
 TMPBG=/tmp/screen.png
-scrot $TMPBG && convert $TMPBG -scale 5.1% -scale 2000% -draw "fill black fill-opacity 0.4 $rectangles" $TMPBG
+scrot $TMPBG && convert $TMPBG -scale 5.05% -scale 2000% -draw "fill black fill-opacity 0.4 $rectangles" $TMPBG
 
 xset s off dpms 0 10 0
 i3lock \
