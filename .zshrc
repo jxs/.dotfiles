@@ -4,6 +4,8 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 export ZSH_THEME="jxs"
 export SHELL="/usr/local/bin/zsh"
+export TERM=xterm-256color
+export COLORTERM=truecolor
 fpath+=~/.zfunc
 
 plugins=(git osx zsh-autosuggestions)

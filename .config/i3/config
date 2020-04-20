@@ -26,7 +26,7 @@ title_align center
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango: Sans Serif 8
+font pango: DejaVu Sans Mono 9
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -48,7 +48,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 bindsym XF86MonBrightnessUp exec brightnessctl s +10%
 bindsym XF86MonBrightnessDown exec brightnessctl s 10%-
 # screenshots
-bindsym Print exec --no-startup-id "qdbus org.kde.Spectacle / RectangularRegion true"
+bindsym Print exec gnome-screenshot -i
 bindsym $mod+F1 [title="nvim"] focus
 bindsym $mod+F2 [title="Mozilla Firefox"] focus
 bindsym $mod+F3 [title="Telegram"] focus
@@ -61,7 +61,7 @@ bindsym $mod+F6 exec --no-startup-id playerctl --player=playerctld next
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec /usr/bin/konsole
+bindsym $mod+Return exec /usr/bin/termite
 bindsym $mod+t exec --no-startup-id xdotool search --name "Mozilla Firefox" key ctrl+t
 
 # kill focused window

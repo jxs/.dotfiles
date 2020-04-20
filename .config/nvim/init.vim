@@ -33,7 +33,7 @@ set undodir=~/.config/nvim/undo/
 "share clipboard with OS
 set clipboard=unnamed
 set termguicolors
-
+set title
 " Indentation
 " ====================================================================
 set expandtab     " replace <Tab> with spaces

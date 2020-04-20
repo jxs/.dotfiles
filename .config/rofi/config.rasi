@@ -4,6 +4,6 @@ configuration {
     font: "hack 10";
     show-icons: true;
     matching: "fuzzy";
-    combi-modi: "window,drun,calc";
-    terminal: "konsole";
+    combi-modi: "drun,window,calc";
+    terminal: "termite";
 }
