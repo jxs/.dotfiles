@@ -9,15 +9,15 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-# set background color
-exec xsetroot -solid "#1d1f21"
 set $mod Mod4
 
 # start libinput gestures
 exec "libinput-gestures-setup start"
 # start notifications
 exec dunst
-
+exec picom -b
+# set background color
+exec hsetroot -solid "#1d1f21"
 #default workspace layout
 workspace_layout tabbed
 

@@ -34,6 +34,7 @@ set undodir=~/.config/nvim/undo/
 set clipboard=unnamed
 set termguicolors
 set title
+set backspace=indent,eol,start
 " Indentation
 " ====================================================================
 set expandtab     " replace <Tab> with spaces
@@ -69,6 +70,7 @@ nnoremap <silent> <leader>l :Rgz<CR>
 nnoremap <silent> <Esc><Esc> :noh<CR><Esc>
 inoremap <silent><expr><M-Tab> exists("g:coc_enabled") ? coc#refresh() : "\<C-n>"
 imap <C-w> <Esc>ciw
+imap <C-h> <Esc>ciw
 noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 20, 2)<CR>
 noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 20, 2)<CR>
 noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 20, 4)<CR>
