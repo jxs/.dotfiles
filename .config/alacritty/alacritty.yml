@@ -1,0 +1,54 @@
+font:
+  # The normal (roman) font face to use.
+  normal:
+    family: Monaco
+    # Style can be specified to pick a specific face.
+    style: Regular
+
+  # The bold font face
+  bold:
+    family: Monaco
+    # Style can be specified to pick a specific face.
+    # style: Bold
+
+  # The italic font face
+  italic:
+    family: Monaco
+    # Style can be specified to pick a specific face.
+    # style: Italic
+  size: 8
+
+# Colors (Dracula)
+colors:
+  # Default colors
+  primary:
+    background: '#1d1f21'
+    foreground: '#dfe3e0'
+
+  # Normal colors
+  normal:
+    black:   '#000000'
+    red:     '#ff5555'
+    green:   '#50fa7b'
+    yellow:  '#f1fa8c'
+    blue:    '#caa9fa'
+    magenta: '#ff79c6'
+    cyan:    '#8be9fd'
+    white:   '#bfbfbf'
+
+  # Bright colors
+  bright:
+    black:   '#575b70'
+    red:     '#ff6e67'
+    green:   '#5af78e'
+    yellow:  '#f4f99d'
+    blue:    '#caa9fa'
+    magenta: '#ff92d0'
+    cyan:    '#9aedfe'
+    white:   '#e6e6e6'
+
+key_bindings:
+    - { key: T, mods: Control|Shift, action: SpawnNewInstance }
+    - { key: K, mods: Control, action: ClearHistory }
+    - { key: Back, mods: Control, chars: "\x17" }
+    - { key: Space, mods: Control, action: ToggleViMode }
