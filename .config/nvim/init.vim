@@ -6,14 +6,12 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release', 'for': ['rust']}
 Plug 'rust-lang/rust.vim'
 Plug 'pangloss/vim-javascript'
-" Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-commentary'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'mbbill/undotree'
 Plug 'chaoren/vim-wordmotion'
-Plug 'mattn/webapi-vim'
 Plug 'tpope/vim-surround'
 Plug 'terryma/vim-smooth-scroll'
 
@@ -31,7 +29,7 @@ set undofile
 set undodir=~/.config/nvim/undo/
 
 "share clipboard with OS
-set clipboard=unnamed
+set clipboard=unnamedplus
 set termguicolors
 set title
 set backspace=indent,eol,start
@@ -69,8 +67,7 @@ nnoremap <silent> <leader>c :bd<CR>
 nnoremap <silent> <leader>l :Rgz<CR>
 nnoremap <silent> <Esc><Esc> :noh<CR><Esc>
 inoremap <silent><expr><M-Tab> exists("g:coc_enabled") ? coc#refresh() : "\<C-n>"
-imap <C-w> <Esc>ciw
-imap <C-h> <Esc>ciw
+imap <C-BS> <C-W>
 noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 20, 2)<CR>
 noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 20, 2)<CR>
 noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 20, 4)<CR>
