@@ -1,3 +1,4 @@
+
 font:
   # The normal (roman) font face to use.
   normal:
@@ -16,36 +17,35 @@ font:
     family: Monaco
     # Style can be specified to pick a specific face.
     # style: Italic
-  size: 8
+  size: 6.5
 
-# Colors (Dracula)
 colors:
   # Default colors
   primary:
     background: '#1d1f21'
     foreground: '#dfe3e0'
 
-  # Normal colors
+     # Normal colors
   normal:
-    black:   '#000000'
-    red:     '#ff5555'
-    green:   '#50fa7b'
-    yellow:  '#f1fa8c'
-    blue:    '#caa9fa'
-    magenta: '#ff79c6'
-    cyan:    '#8be9fd'
-    white:   '#bfbfbf'
+    black:   '0x01060E'
+    red:     '0xEA6C73'
+    green:   '0x91B362'
+    yellow:  '0xF9AF4F'
+    blue:    '0x53BDFA'
+    magenta: '0xFAE994'
+    cyan:    '0x90E1C6'
+    white:   '0xC7C7C7'
 
   # Bright colors
   bright:
-    black:   '#575b70'
-    red:     '#ff6e67'
-    green:   '#5af78e'
-    yellow:  '#f4f99d'
-    blue:    '#caa9fa'
-    magenta: '#ff92d0'
-    cyan:    '#9aedfe'
-    white:   '#e6e6e6'
+    black:   '0x686868'
+    red:     '0xF07178'
+    green:   '0xC2D94C'
+    yellow:  '0xFFB454'
+    blue:    '0x59C2FF'
+    magenta: '0xFFEE99'
+    cyan:    '0x95E6CB'
+    white:   '0xFFFFFF'
 
 key_bindings:
     - { key: T, mods: Control|Shift, action: SpawnNewInstance }

@@ -1,0 +1,124 @@
+[bar/mybar]
+monitor =
+width = 100%
+height = 3%
+fixed-center = true
+bottom = true
+font-0 = Liberation-Sans:size=7;6
+font-1 = MaterialIcons-Regular:pixelsize=10;6
+font-2 = forkawesome-webfont:pixelsize=10;5
+dpi-x = 166
+dpi-y = 166
+
+background = #1d1f21
+foreground = #c4c7d1
+
+modules-right = filesystem memory pulseaudio-control cpu battery wireless-network time
+modules-left = i3
+module-margin = 1
+module-padding = 1
+
+tray-position = right
+tray-scale = 1.2
+
+
+[module/filesystem]
+type = internal/fs
+mount-0 = /
+interval = 10
+format-mounted = <label-mounted>
+label-mounted = / %free%
+fixed-values = true
+format-spacing = 1
+
+[module/memory]
+type = internal/memory
+interval = 1
+format = <ramp-used> <label>
+ramp-used-0 = 
+ramp-used-1 = 
+ramp-used-2 = 
+ramp-used-3 = 
+ramp-used-2-foreground = #d6951d
+ramp-used-3-foreground = #c41d36
+click-left = exec htop &
+label =  %gb_used%
+
+/* [module/pulseaudio] */
+/* type = internal/pulseaudio */
+/* sink = alsa_output.pci-0000_06_00.6.analog-stereo */
+/* use-ui-max = true */
+/* interval = 5 */
+/* format-volume = <ramp-volume> <label-volume> */
+/* label-muted =  */
+/* label-muted-foreground = #d6951d */
+/* ramp-volume-0 =  */
+/* ramp-volume-1 =  */
+/* ramp-volume-2 =  */
+/* left-right = exec pavucontrol & */
+
+[module/pulseaudio-control]
+type = custom/script
+tail = true
+label=%output%
+exec = ~/.config/polybar/scripts/pulseaudio-control.bash listen
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = AC
+poll-interval = 2
+full-at = 99
+format-charging = <label-charging>
+format-discharging = <ramp-capacity> <label-discharging>
+label-charging =  %percentage%%
+label-discharging = %percentage%% %time%
+label-full = 
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-0-foreground = #c41d36
+ramp-capacity-1-foreground = #d6951d
+ramp-capacity-2-foreground = #1f542d
+ramp-capacity-3-foreground = #1f542d
+ramp-capacity-4-foreground = #1f542d
+
+time-format = %H:%M
+
+[module/cpu]
+type = internal/cpu
+interval = 0.5
+format = <ramp-load> <label>
+ramp-load-0 = 
+ramp-load-1 = 
+ramp-load-2 = 
+ramp-load-3 = 
+ramp-load-2-foreground = #d6951d
+ramp-load-3-foreground = #c41d36
+label = %percentage%%
+[module/wireless-network]
+type = internal/network
+label-connected =  %essid%
+label-disconnected = 
+interface = wlp1s0
+
+[module/time]
+type = internal/date
+interval = 5
+date = " %a %d/%m"
+time = %H:%M
+format-prefix = 
+label = %date% %time%
+
+
+[module/i3]
+type = internal/i3
+enable-scroll = false
+ws-icon-0 = 1; 
+ws-icon-1 = 2; 
+ws-icon-2 = 3; 
+label-focused = %icon%
+label-unfocused = %icon%
+label-unfocused-foreground = #434c5e

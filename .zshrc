@@ -3,7 +3,7 @@ ZSH=$HOME/.oh-my-zsh
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 export ZSH_THEME="jxs"
-export SHELL="/usr/local/bin/zsh"
+export SHELL="/usr/bin/zsh"
 export TERM=xterm-256color
 export COLORTERM=truecolor
 fpath+=~/.zfunc

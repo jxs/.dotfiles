@@ -1,9 +1,9 @@
 configuration {
     modi: "drun,window,combi,calc";
-    theme: "android_notification";
-    font: "hack 10";
+    theme: "slate";
+    font: "Liberation Sans 12";
     show-icons: true;
     matching: "fuzzy";
     combi-modi: "drun,window,calc";
-    terminal: "termite";
+    terminal: "alacritty";
 }
