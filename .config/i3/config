@@ -10,6 +10,9 @@ exec "libinput-gestures-setup start"
 # start notifications
 exec dunst
 
+# lock on suspend
+exec xss-lock /home/jxs/.config/i3/lock.sh
+
 # composition
 exec picom -b
 

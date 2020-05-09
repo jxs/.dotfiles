@@ -8,7 +8,7 @@ export TERM=xterm-256color
 export COLORTERM=truecolor
 fpath+=~/.zfunc
 
-plugins=(git osx zsh-autosuggestions)
+plugins=(git zsh-autosuggestions pass)
 
 source $ZSH/oh-my-zsh.sh
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=147'
@@ -17,8 +17,6 @@ export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=147'
 alias ls='ls -G'
 alias ll='ls -hl'
 alias cat='bat'
-alias e='emacs -nw'
-alias v='nvim'
 alias vim='nvim'
 #PATH
 export PATH=/usr/local/bin:/usr/local/sbin:${PATH}
@@ -37,4 +35,5 @@ zstyle ':completion:*' special-dirs true
 export RUST_SRC_PATH=~/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src
 export CARGO_HOME=~/.cargo
 
+#fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

@@ -48,6 +48,7 @@
 /.belastingdienst.nl
 /.bi_li3
 /.bower
+/.fzf
 /.bup
 /.bzr.log
 /.cache
@@ -57,7 +58,12 @@
 /.cassandra
 /.CFUserTextEncoding
 /.chef
-/.config
+/.config/Plexamp
+/.config/chromium
+/.config/discord
+/.config/whatsapp-nativefier-*
+/.config/pulse
+/.mozilla
 /.cookiecutters
 /.cups
 /.dbshell
@@ -71,7 +77,6 @@
 /.eaglerc
 /.emacs.d
 /.flow-typed/
-/.fontconfig
 /.ftcurlish.json
 /.gem
 /.gh-credentials
@@ -138,15 +143,14 @@
 /.XcodeDefaultPerspective.mode1v3
 /.yarn*
 /.yesgraph-*
-/.SoulseekQt
 /.kodi
 /.local/share
-/.mozilla
 /.purple
 /.rustup
 /.thunderbird
 /.xkb
 /.pki
+/.password-store
 /.z*
 
 # Directories
