@@ -11,7 +11,7 @@ exec "libinput-gestures-setup start"
 exec dunst
 
 # lock on suspend
-exec xss-lock /home/jxs/.config/i3/lock.sh
+exec xss-lock -l /home/jxs/.config/i3/lock.sh
 
 # composition
 exec picom -b
