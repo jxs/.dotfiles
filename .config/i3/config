@@ -175,6 +175,7 @@ for_window [class="Blueman-manager"] floating enable
 for_window [class="Epiphany"] floating enable
 for_window [class="Eog"] floating enable
 for_window [class="File-roller"] floating enable
+for_window [class="Pavucontrol"] floating enable
 for_window [title="Celluloid"] floating enable
 
 ## Base16 Tomorrow Night

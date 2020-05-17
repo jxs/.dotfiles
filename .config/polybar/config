@@ -43,24 +43,12 @@ ramp-used-3-foreground = #c41d36
 click-left = exec htop &
 label =  %gb_used%
 
-/* [module/pulseaudio] */
-/* type = internal/pulseaudio */
-/* sink = alsa_output.pci-0000_06_00.6.analog-stereo */
-/* use-ui-max = true */
-/* interval = 5 */
-/* format-volume = <ramp-volume> <label-volume> */
-/* label-muted =  */
-/* label-muted-foreground = #d6951d */
-/* ramp-volume-0 =  */
-/* ramp-volume-1 =  */
-/* ramp-volume-2 =  */
-/* left-right = exec pavucontrol & */
-
 [module/pulseaudio-control]
 type = custom/script
 tail = true
 label=%output%
 exec = ~/.config/polybar/scripts/pulseaudio-control.bash listen
+double-click-left = exec pavucontrol
 
 [module/battery]
 type = internal/battery

@@ -32,8 +32,8 @@ export LANG=en_US.UTF-8
 zstyle ':completion:*' special-dirs true
 
 #rust
-export RUST_SRC_PATH=~/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src
 export CARGO_HOME=~/.cargo
+export PATH="$HOME/.cargo/bin:$PATH"
 
 #fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

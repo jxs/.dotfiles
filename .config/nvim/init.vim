@@ -3,19 +3,28 @@
 call plug#begin('~/.config/nvim/plugs/')
 
 Plug 'editorconfig/editorconfig-vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release', 'for': ['rust']}
 Plug 'rust-lang/rust.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'tpope/vim-commentary'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'neovim/nvim-lsp'
+Plug 'haorenW1025/completion-nvim'
 Plug 'mbbill/undotree'
 Plug 'chaoren/vim-wordmotion'
 Plug 'tpope/vim-surround'
 Plug 'terryma/vim-smooth-scroll'
 
 call plug#end()
+" Theme
+" ====================================================================
+colorscheme palenight
+set noshowmode
+let g:lightline = {'colorscheme': 'palenight',}
+hi Normal guibg=NONE ctermbg=NONE
+hi LineNr guibg=NONE
+
 " Global Settings
 " ====================================================================
 set autoread
@@ -27,6 +36,13 @@ set autochdir
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 set undofile
 set undodir=~/.config/nvim/undo/
+" Lsp config
+luafile ~/.config/nvim/lsp.lua
+" Set completeopt to have a better completion experience
+set completeopt=menuone,noinsert,noselect
+" Avoid showing message extra message when using completion
+set shortmess+=c
+let g:completion_enable_auto_popup = 0
 
 "share clipboard with OS
 set clipboard=unnamedplus
@@ -47,14 +63,6 @@ set ignorecase
 set smartcase  " override the 'ignorecase' when there is uppercase letters
 set gdefault   " when on, the :substitute flag 'g' is default on
 
-" Theme
-" ====================================================================
-colorscheme palenight
-set noshowmode
-let g:lightline = {'colorscheme': 'palenight',}
-hi Normal guibg=NONE ctermbg=NONE
-hi LineNr guibg=NONE
-
 " Key mappings
 " ====================================================================
 let mapleader = "\<C-x>"
@@ -66,7 +74,15 @@ nnoremap <silent> <leader>e :Files<CR>
 nnoremap <silent> <leader>c :bd<CR>
 nnoremap <silent> <leader>l :Rgz<CR>
 nnoremap <silent> <Esc><Esc> :noh<CR><Esc>
-inoremap <silent><expr><M-Tab> exists("g:coc_enabled") ? coc#refresh() : "\<C-n>"
+" inoremap <silent><expr> <M-Tab> completion#trigger_completion()
+function! s:check_back_space() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" :
+            \ <SID>check_back_space() ? "\<TAB>" :
+            \ completion#trigger_completion()
+nnoremap <silent> gD <cmd>lua vim.lsp.buf.definition()<CR>
 imap <C-BS> <C-W>
 noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 20, 2)<CR>
 noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 20, 2)<CR>
