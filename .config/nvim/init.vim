@@ -43,6 +43,7 @@ set completeopt=menuone,noinsert,noselect
 " Avoid showing message extra message when using completion
 set shortmess+=c
 let g:completion_enable_auto_popup = 0
+autocmd BufEnter * lua require'completion'.on_attach()
 
 "share clipboard with OS
 set clipboard=unnamedplus
@@ -67,7 +68,6 @@ set gdefault   " when on, the :substitute flag 'g' is default on
 " ====================================================================
 let mapleader = "\<C-x>"
 nnoremap <silent><leader>u :UndotreeToggle<CR><C-w>h
-" nmap  <Leader>w  <Plug>(easymotion-s)
 nnoremap <silent> <leader>b :Buffers<CR>
 nnoremap <silent> <leader>f :GFiles -c --others --exclude-standard<CR>
 nnoremap <silent> <leader>e :Files<CR>
@@ -83,12 +83,14 @@ inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" :
             \ <SID>check_back_space() ? "\<TAB>" :
             \ completion#trigger_completion()
 nnoremap <silent> gD <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> gr <cmd>lua vim.lsp.buf.references()<CR>
 imap <C-BS> <C-W>
 noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 20, 2)<CR>
 noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 20, 2)<CR>
 noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 20, 4)<CR>
 noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 20, 4)<CR>
-
+noremap <PageUp> <nop>
+noremap <PageDown> <nop>
 " Autocmd's
 " ====================================================================
 " clear whitespace on save
