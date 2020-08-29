@@ -50,6 +50,9 @@ set clipboard=unnamedplus
 set termguicolors
 set title
 set backspace=indent,eol,start
+"netrw config
+let g:netrw_banner=0
+let g:netrw_hide=0
 " Indentation
 " ====================================================================
 set expandtab     " replace <Tab> with spaces
@@ -70,7 +73,7 @@ let mapleader = "\<C-x>"
 nnoremap <silent><leader>u :UndotreeToggle<CR><C-w>h
 nnoremap <silent> <leader>b :Buffers<CR>
 nnoremap <silent> <leader>f :GFiles -c --others --exclude-standard<CR>
-nnoremap <silent> <leader>e :Files<CR>
+nnoremap <silent> <leader>e :Explore<CR>
 nnoremap <silent> <leader>c :bd<CR>
 nnoremap <silent> <leader>l :Rgz<CR>
 nnoremap <silent> <Esc><Esc> :noh<CR><Esc>
@@ -83,12 +86,13 @@ inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" :
             \ <SID>check_back_space() ? "\<TAB>" :
             \ completion#trigger_completion()
 nnoremap <silent> gD <cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <silent> gr <cmd>lua vim.lsp.buf.references()<CR>
+nnoremap <silent> gr <cmd>lua vim.lsp.buf.rename()<CR>
 imap <C-BS> <C-W>
 noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 20, 2)<CR>
 noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 20, 2)<CR>
 noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 20, 4)<CR>
 noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 20, 4)<CR>
+noremap ' /
 noremap <PageUp> <nop>
 noremap <PageDown> <nop>
 " Autocmd's

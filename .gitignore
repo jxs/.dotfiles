@@ -62,6 +62,7 @@
 /.config/chromium
 /.config/discord
 /.config/whatsapp-nativefier-*
+/.config/BraveSoftware
 /.config/pulse
 /.mozilla
 /.cookiecutters
