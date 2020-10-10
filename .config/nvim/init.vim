@@ -4,7 +4,6 @@ call plug#begin('~/.config/nvim/plugs/')
 
 Plug 'editorconfig/editorconfig-vim'
 Plug 'rust-lang/rust.vim'
-Plug 'pangloss/vim-javascript'
 Plug 'tpope/vim-commentary'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -43,6 +42,20 @@ set completeopt=menuone,noinsert,noselect
 " Avoid showing message extra message when using completion
 set shortmess+=c
 let g:completion_enable_auto_popup = 0
+let g:completion_chain_complete_list = {
+            \ 'default': {
+            \   'default': [
+            \      {'complete_items': ['lsp', 'snippet']},
+            \      {'mode': '<c-n>'},
+            \   ],
+            \   'string': [
+            \      {'complete_items': ['path']},
+            \   ],
+            \   'comment': [
+            \      {'complete_items': ['path']},
+            \   ],
+            \ },
+            \ }
 autocmd BufEnter * lua require'completion'.on_attach()
 
 "share clipboard with OS
