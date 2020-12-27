@@ -1,0 +1,83 @@
+{
+    "position": "top",
+        "height": 30,
+        "sway/window": {
+        "max-length": 50
+        },
+        "modules-left": ["sway/workspaces"],
+        "modules-center": [],
+        "modules-right": ["disk", "cpu", "memory", "pulseaudio", "battery", "tray", "clock"],
+
+        "sway/workspaces": {
+            "persistent_workspaces": true,
+            "disable-scroll": true,
+            "format": "{icon}",
+            "format-icons": {
+                "1": "",
+                "2": "",
+                "3": "",
+            }
+        },
+        "wlr/taskbar": {
+            "format": "{icon} {title}",
+            "on-click": "activate",
+        },
+        "disk": {
+            "interval": 5,
+            "format": "/ {free}",
+            "path": "/",
+            "on-click": "nautilus"
+        },
+            "cpu": {
+                "states": {
+                    "warning": 70,
+                    "critical": 90
+                },
+                "interval": 1,
+                "format": "",
+                "format-tooltip": "{usage}%",
+                "max-length": 10
+            },
+            "memory": {
+                "states": {
+                    "warning": 70,
+                    "critical": 90
+                },
+                "interval": 1,
+                "format": "",
+            },
+            "battery": {
+                "states": {
+                    "ok": 99,
+                    "warning": 30,
+                    "critical": 15
+                },
+                "format": "{icon} {capacity}%",
+                "tooltip-format": "{capacity}%",
+                "format-icons": ["", "", "", "", ""]
+            },
+            "pulseaudio": {
+                "format": "{icon} {volume}%",
+                "format-bluetooth": "{volume}% {icon}",
+                "format-muted": "",
+                "format-icons": {
+                    "headphone": "",
+                    "hands-free": "",
+                    "headset": "",
+                    "phone": "",
+                    "portable": "",
+                    "car": "",
+                    "default": ["", ""]
+                },
+                "scroll-step": 1,
+                "on-click": "pavucontrol"
+            },
+            "clock": {
+                "tooltip-format": "{:%a, %d. %b  %H:%M}",
+                "on-click": "gsimplecal"
+            },
+            "tray": {
+                "icon-size": 20,
+                "spacing": 10
+            }
+}

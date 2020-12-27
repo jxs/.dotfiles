@@ -61,9 +61,14 @@
 /.config/Plexamp
 /.config/chromium
 /.config/discord
+/.config/GIMP
 /.config/whatsapp-nativefier-*
 /.config/BraveSoftware
 /.config/pulse
+/.config/Slack
+/.config/spotify
+/.config/vivaldi
+/.config/vivaldi-snapshot
 /.mozilla
 /.cookiecutters
 /.cups

@@ -70,7 +70,7 @@ ramp-capacity-0-foreground = #c41d36
 ramp-capacity-1-foreground = #d6951d
 ramp-capacity-2-foreground = #1f542d
 ramp-capacity-3-foreground = #1f542d
-ramp-capacity-4-foreground = #1f542d
+ramp-capacity-4-foreground = #0f542d
 
 time-format = %H:%M
 

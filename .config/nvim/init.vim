@@ -6,9 +6,8 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'rust-lang/rust.vim'
 Plug 'tpope/vim-commentary'
 Plug 'itchyny/lightline.vim'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'neovim/nvim-lsp'
+:Plug 'neovim/nvim-lspconfig'
 Plug 'haorenW1025/completion-nvim'
 Plug 'mbbill/undotree'
 Plug 'chaoren/vim-wordmotion'
@@ -21,8 +20,6 @@ call plug#end()
 colorscheme palenight
 set noshowmode
 let g:lightline = {'colorscheme': 'palenight',}
-hi Normal guibg=NONE ctermbg=NONE
-hi LineNr guibg=NONE
 
 " Global Settings
 " ====================================================================
@@ -63,9 +60,8 @@ set clipboard=unnamedplus
 set termguicolors
 set title
 set backspace=indent,eol,start
-"netrw config
-let g:netrw_banner=0
-let g:netrw_hide=0
+"fzf config
+let g:fzf_layout = { 'down': '30%' }
 " Indentation
 " ====================================================================
 set expandtab     " replace <Tab> with spaces
@@ -86,7 +82,7 @@ let mapleader = "\<C-x>"
 nnoremap <silent><leader>u :UndotreeToggle<CR><C-w>h
 nnoremap <silent> <leader>b :Buffers<CR>
 nnoremap <silent> <leader>f :GFiles -c --others --exclude-standard<CR>
-nnoremap <silent> <leader>e :Explore<CR>
+nnoremap <silent> <leader>e :FZFExplore<CR>
 nnoremap <silent> <leader>c :bd<CR>
 nnoremap <silent> <leader>l :Rgz<CR>
 nnoremap <silent> <Esc><Esc> :noh<CR><Esc>
@@ -108,6 +104,7 @@ noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 20, 4)<CR>
 noremap ' /
 noremap <PageUp> <nop>
 noremap <PageDown> <nop>
+" tnoremap <Esc> <C-\><C-n>
 " Autocmd's
 " ====================================================================
 " clear whitespace on save
@@ -115,9 +112,26 @@ autocmd BufWritePre * %s/\s\+$//e
 
 " Custom functions
 " ===================================================================
-function! RgFzf(query, spec, fullscreen)
+" Search pattern across repository files
+function! RgFzf(...)
+    let input = input('Enter expression: ')
     let git_root = system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
-    let rg_command = printf("rg --column --line-number --no-heading --color=always  %s %s", a:query, git_root)
-    call fzf#vim#grep(rg_command, 1, a:spec, a:fullscreen)
+    let rg_command = printf("rg --column --line-number --no-heading --color=always '%s' %s", input, git_root)
+    call fzf#vim#grep(rg_command, 1, fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}))
 endfunction
 command! -bang -nargs=* Rgz call RgFzf(shellescape(<q-args>), {}, <bang>0)
+
+" Search pattern across repository files
+function! FzfExplore(...)
+    let inpath = substitute(a:1, "'", '', 'g')
+    if inpath == "" || matchend(inpath, '/') == strlen(inpath)
+        execute "cd" getcwd() . '/' . inpath
+        let cwpath = getcwd() . '/'
+        call fzf#run(fzf#wrap(fzf#vim#with_preview({'source': 'ls -1ap', 'dir': cwpath, 'sink': 'FZFExplore', 'options': ['--prompt', cwpath]})))
+    else
+        let file = getcwd() . '/' . inpath
+        execute "e" file
+    endif
+endfunction
+
+command! -nargs=* FZFExplore call FzfExplore(shellescape(<q-args>))

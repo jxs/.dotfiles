@@ -1,0 +1,65 @@
+* {
+    border:        none;
+    border-radius: 0;
+    box-shadow:    none;
+    text-shadow:   none;
+    transition-duration: 0s;
+}
+
+window {
+    background: transparent;
+}
+
+#workspaces {
+    margin-left: 5px;
+}
+
+#workspaces button {
+    background: transparent;
+    font-size: 20px;
+    margin: 0 -10px;
+}
+
+#workspaces button.focused {
+    color: rgba(217, 216, 216, 1);
+}
+
+#mode, #battery, #cpu, #disk, #clock, #memory, #network, #pulseaudio, #tray {
+    color: rgba(217, 216, 216, 1);
+    font-size: 15px;
+    margin: 0px 6px 0px 6px;
+    min-width:  20px;
+}
+
+#clock {
+    margin-right: 10px;
+}
+
+#battery.ok {
+    color: #0f542d;
+}
+
+#battery.warning {
+   color: rgba(255, 210, 4, 1);
+}
+
+#battery.critical {
+    color: rgba(238, 46, 36, 1);
+}
+
+#battery.charging {
+    color: rgba(217, 216, 216, 1);
+}
+
+#memory.warning, #cpu.warning, #battery.warning {
+   color: #d6951d;
+}
+
+#memory.critical, #cpu.critical, #battery.critical {
+    color: #c41d36;
+}
+
+
+#pulseaudio.muted {
+   color: #d6951d;
+}

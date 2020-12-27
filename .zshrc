@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh configuration.
-ZSH=$HOME/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 export ZSH_THEME="jxs"
@@ -14,12 +14,8 @@ source $ZSH/oh-my-zsh.sh
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=147'
 
 # Customize to your needs...
-alias ls='ls -G'
-alias ll='ls -hl'
 alias cat='bat'
 alias vim='nvim'
-#PATH
-export PATH=/usr/local/bin:/usr/local/sbin:${PATH}
 
 #go
 export GOPATH=$HOME/.go
@@ -37,3 +33,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 #fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# ssh-agent
+export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
+
