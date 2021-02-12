@@ -6,7 +6,7 @@ set $mod Mod4
 exec "libinput-gestures-setup start"
 
 # start notifications
-exec dunst
+exec mako
 exec "eval $(ssh-agent)"
 
 # lock on suspend

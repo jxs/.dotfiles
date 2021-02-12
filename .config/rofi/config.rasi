@@ -5,5 +5,5 @@ configuration {
     show-icons: true;
     matching: "fuzzy";
     combi-modi: "drun,window,calc";
-    terminal: "alacritty";
+    terminal: "kitty";
 }

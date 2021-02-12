@@ -7,12 +7,13 @@ Plug 'rust-lang/rust.vim'
 Plug 'tpope/vim-commentary'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf.vim'
-:Plug 'neovim/nvim-lspconfig'
+Plug 'neovim/nvim-lspconfig'
 Plug 'haorenW1025/completion-nvim'
 Plug 'mbbill/undotree'
 Plug 'chaoren/vim-wordmotion'
 Plug 'tpope/vim-surround'
 Plug 'terryma/vim-smooth-scroll'
+Plug 'cespare/vim-toml'
 
 call plug#end()
 " Theme
@@ -38,6 +39,8 @@ luafile ~/.config/nvim/lsp.lua
 set completeopt=menuone,noinsert,noselect
 " Avoid showing message extra message when using completion
 set shortmess+=c
+" 2 spaces default for yaml
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 let g:completion_enable_auto_popup = 0
 let g:completion_chain_complete_list = {
             \ 'default': {
@@ -116,7 +119,7 @@ autocmd BufWritePre * %s/\s\+$//e
 function! RgFzf(...)
     let input = input('Enter expression: ')
     let git_root = system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
-    let rg_command = printf("rg --column --line-number --no-heading --color=always '%s' %s", input, git_root)
+    let rg_command = printf("rg --column --line-number --no-heading --color=always --fixed-strings '%s' %s", input, git_root)
     call fzf#vim#grep(rg_command, 1, fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}))
 endfunction
 command! -bang -nargs=* Rgz call RgFzf(shellescape(<q-args>), {}, <bang>0)

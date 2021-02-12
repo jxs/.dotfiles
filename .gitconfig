@@ -2,11 +2,17 @@
         name = João Oliveira
         email = hello@jxs.pt
 [color]
-        ui = true
+	ui = true
 [core]
         excludesfile = /Users/jxs/.global_gitignore
 	editor = nvim
+	pager = diff-so-fancy | less --tabs=4 -RFX
 [color "diff"]
         whitespace = red reverse
 [url "https://"]
 	insteadOf = git://
+[init]
+	defaultBranch = main
+[credential]
+	helper = store
+
