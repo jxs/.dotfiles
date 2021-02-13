@@ -9,3 +9,10 @@ height=110
 max-icon-size=64
 default-timeout=5000
 ignore-timeout=1
+
+[category="SYSTEM_NOTIFICATION"]
+anchor=center
+width=350
+padding=20,0,20,25
+border-radius=4
+border-size=0

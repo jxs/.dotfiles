@@ -1,18 +1,22 @@
 [user]
-        name = João Oliveira
-        email = hello@jxs.pt
+    name = João Oliveira
+    email = hello@jxs.pt
 [color]
 	ui = true
+[diff]
+    colorMoved = default
 [core]
-        excludesfile = /Users/jxs/.global_gitignore
-	editor = nvim
-	pager = diff-so-fancy | less --tabs=4 -RFX
-[color "diff"]
-        whitespace = red reverse
+    pager = delta
+[delta]
+    syntax-theme = ZenBurn
+    features = line-numbers decorations
+[interactive]
+    diffFilter = delta --color-only
 [url "https://"]
 	insteadOf = git://
 [init]
 	defaultBranch = main
 [credential]
 	helper = store
-
+[oh-my-zsh]
+    hide-info = 1
