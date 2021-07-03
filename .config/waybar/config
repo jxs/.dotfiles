@@ -1,6 +1,6 @@
 {
     "position": "top",
-        "height": 30,
+        "height": 32,
         "sway/window": {
         "max-length": 50
         },
@@ -24,9 +24,10 @@
         },
         "disk": {
             "interval": 5,
-            "format": "/ {free}",
+            "format": "",
             "path": "/",
-            "on-click": "nautilus"
+            "on-click": "nautilus",
+            "tooltip-format": "{free} free of {total}"
         },
             "cpu": {
                 "states": {
@@ -45,6 +46,7 @@
                 },
                 "interval": 1,
                 "format": "",
+                "on-click": "gnome-system-monitor"
             },
             "battery": {
                 "states": {
@@ -53,20 +55,15 @@
                     "critical": 15
                 },
                 "format": "{icon} {capacity}%",
-                "tooltip-format": "{capacity}%",
+                "format-full": "",
                 "format-icons": ["", "", "", "", ""]
             },
             "pulseaudio": {
-                "format": "{icon} {volume}%",
-                "format-bluetooth": "{volume}% {icon}",
+                "format": "{icon}",
+                "format-bluetooth": "{icon}",
                 "format-muted": "",
                 "format-icons": {
                     "headphone": "",
-                    "hands-free": "",
-                    "headset": "",
-                    "phone": "",
-                    "portable": "",
-                    "car": "",
                     "default": ["", ""]
                 },
                 "scroll-step": 1,

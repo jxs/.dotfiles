@@ -6,6 +6,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'rust-lang/rust.vim'
 Plug 'tpope/vim-commentary'
 Plug 'itchyny/lightline.vim'
+Plug 'itchyny/vim-gitbranch'
 Plug 'junegunn/fzf.vim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'haorenW1025/completion-nvim'
@@ -20,13 +21,23 @@ call plug#end()
 " ====================================================================
 colorscheme palenight
 set noshowmode
-let g:lightline = {'colorscheme': 'palenight',}
+let g:lightline = {
+      \ 'colorscheme': 'palenight',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'readonly', 'filename', 'filetype', 'modified' ] ],
+      \   'right': [ [ 'lineinfo' ],
+      \              [ 'percent' ],
+      \              [ 'gitbranch', 'fileencoding', 'fileformat'] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'gitbranch#name'
+      \ },
+      \ }
 
 " Global Settings
 " ====================================================================
 set autoread
-" checktime checks current file for changes, see https://github.com/neovim/neovim/issues/1936
-au FocusGained * :checktime
 set number! relativenumber!
 set nofoldenable
 set autochdir
@@ -34,7 +45,14 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 set undofile
 set undodir=~/.config/nvim/undo/
 " Lsp config
-luafile ~/.config/nvim/lsp.lua
+lua <<EOF
+  local nvim_lsp = require'lspconfig'
+  local util = require'lspconfig/util'
+
+  nvim_lsp.rust_analyzer.setup({
+    cmd = {"rust-analyzer"};
+  })
+EOF
 " Set completeopt to have a better completion experience
 set completeopt=menuone,noinsert,noselect
 " Avoid showing message extra message when using completion

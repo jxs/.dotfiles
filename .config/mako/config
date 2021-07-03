@@ -1,6 +1,7 @@
 sort=-time
 layer=overlay
 background-color=#1d1f21
+progress-color=#434747
 border-size=2
 border-color=#5d605e
 font=Liberation Sans 11

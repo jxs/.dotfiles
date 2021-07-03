@@ -4,14 +4,13 @@ export TERM=xterm-256color
 export COLORTERM=truecolor
 export ZSH_THEME="arrow"
 export EDITOR='nvim'
-export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
 
 # -- aliases
 alias cat='bat'
 alias vim='nvim'
-
+alias gb='git rev-parse --abbrev-ref HEAD'
 # -- load zgen
 source "/usr/share/zsh/share/zgen.zsh"
 

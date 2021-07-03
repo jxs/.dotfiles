@@ -17,16 +17,20 @@ x-scheme-handler/about=vivaldi-stable.desktop
 x-scheme-handler/unknown=vivaldi-stable.desktop
 application/epub+zip=FBReader.desktop
 image/jpeg=org.gnome.eog.desktop
+x-scheme-handler/gitkraken=GitKraken.desktop
 
 [Added Associations]
 x-scheme-handler/http=firefox.desktop;
 x-scheme-handler/https=firefox.desktop;
 text/html=firefox.desktop;
 image/png=org.gnome.eog.desktop;
-application/pdf=org.gnome.Evince.desktop;brave-browser.desktop;qpdfview.desktop;org.pwmt.zathura-pdf-mupdf.desktop;
+application/pdf=org.inkscape.Inkscape.desktop;org.gnome.Evince.desktop;brave-browser.desktop;qpdfview.desktop;org.pwmt.zathura-pdf-mupdf.desktop;
 application/epub+zip=FBReader.desktop;
 image/jpeg=org.gnome.eog.desktop;
 x-scheme-handler/tg=userapp-Telegram Desktop-EENTS0.desktop;
 image/svg+xml=org.inkscape.Inkscape.desktop;
 audio/mpeg=vlc.desktop;
-video/x-matroska=vlc.desktop;
+video/x-matroska=vlc.desktop;io.github.celluloid_player.Celluloid.desktop;
+application/x-partial-download=vlc.desktop;
+video/mp4=vlc.desktop;io.github.celluloid_player.Celluloid.desktop;
+video/webm=vlc.desktop;

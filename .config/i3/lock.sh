@@ -16,15 +16,15 @@ scrot $TMPBG && convert $TMPBG -scale 5.05% -scale 2000% -draw "fill black fill-
 xset s off dpms 0 10 0
 i3lock \
   -i $TMPBG  \
-  --timepos="x+100:h-120" \
-  --datepos="x+130:h-100" \
-  --clock --datestr "Type password to unlock..." \
-  --insidecolor=00000000 --ringcolor=ffffffff --line-uses-inside \
-  --keyhlcolor=d23c3dff --bshlcolor=d23c3dff --separatorcolor=00000000 \
-  --insidevercolor=fecf4dff --insidewrongcolor=d23c3dff \
-  --ringvercolor=ffffffff --ringwrongcolor=ffffffff --indpos="x+290:h-120" \
-  --radius=20 --ring-width=3 --veriftext="" --wrongtext="" \
-  --verifcolor="ffffffff" --timecolor="ffffffff" --datecolor="ffffffff"
+  --time-pos="x+100:h-120" \
+  --date-pos="x+130:h-100" \
+  --clock \
+  --inside-color=00000000 --ring-color=ffffffff --line-uses-inside \
+  --keyhl-color=d23c3dff --bshl-color=d23c3dff --separator-color=00000000 \
+  --insidever-color=fecf4dff --insidewrong-color=d23c3dff \
+  --ringver-color=ffffffff --ringwrong-color=ffffffff --ind-pos="x+290:h-120" \
+  --radius=20 --ring-width=3 --verif-text="" --wrong-text="" \
+  --verif-color="ffffffff" --time-color="ffffffff" --date-color="ffffffff"
 
 xset s off -dpms
 

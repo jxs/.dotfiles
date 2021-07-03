@@ -3,37 +3,27 @@ monitor =
 width = 100%
 height = 3%
 fixed-center = true
-bottom = true
 font-0 = Monaco:size=6;6
-font-1 = MaterialIcons-Regular:pixelsize=10;6
-font-2 = forkawesome-webfont:pixelsize=10;5
+font-1 = forkawesome-webfont:pixelsize=8;5
+font-2 = MaterialIcons-Regular:pixelsize=8;6
 dpi-x = 166
 dpi-y = 166
 
-background = #1d1f21
+background = #001d1f21
 foreground = #c4c7d1
 
-modules-right = filesystem memory pulseaudio-control cpu battery wireless-network time
+modules-right = memory pulseaudio-control cpu battery time
 modules-left = i3
 module-margin = 1
-module-padding = 1
+module-padding = 2
 
 tray-position = right
 tray-scale = 1.2
 
-[module/filesystem]
-type = internal/fs
-mount-0 = /
-interval = 10
-format-mounted = <label-mounted>
-label-mounted = / %free%
-fixed-values = true
-format-spacing = 1
-
 [module/memory]
 type = internal/memory
 interval = 1
-format = <ramp-used> <label>
+format = <ramp-used>
 ramp-used-0 = 
 ramp-used-1 = 
 ramp-used-2 = 
@@ -41,21 +31,20 @@ ramp-used-3 = 
 ramp-used-2-foreground = #d6951d
 ramp-used-3-foreground = #c41d36
 click-left = exec htop &
-label =  %gb_used%
 
 [module/pulseaudio-control]
 type = custom/script
 tail = true
 label=%output%
 exec = ~/.config/polybar/scripts/pulseaudio-control.bash listen
-double-click-left = exec pavucontrol
+click-left = exec pavucontrol
 
 [module/battery]
 type = internal/battery
 battery = BAT0
 adapter = AC
 poll-interval = 2
-full-at = 99
+full-at = 95
 format-charging = <label-charging>
 format-discharging = <ramp-capacity> <label-discharging>
 label-charging =  %percentage%%
@@ -77,14 +66,13 @@ time-format = %H:%M
 [module/cpu]
 type = internal/cpu
 interval = 0.5
-format = <ramp-load> <label>
+format = <ramp-load>
 ramp-load-0 = 
 ramp-load-1 = 
 ramp-load-2 = 
 ramp-load-3 = 
 ramp-load-2-foreground = #d6951d
 ramp-load-3-foreground = #c41d36
-label = %percentage%%
 [module/wireless-network]
 type = internal/network
 label-connected =  %essid%
@@ -92,20 +80,18 @@ label-disconnected = 
 interface = wlp1s0
 
 [module/time]
-type = internal/date
-interval = 5
-date = " %a %d/%m"
-time = %H:%M
-format-prefix = 
-label = %date% %time%
-
+type = custom/script
+tail = true
+exec = ~/.config/polybar/scripts/date.sh
+click-left = exec gsimplecal
 
 [module/i3]
 type = internal/i3
 enable-scroll = false
 ws-icon-0 = 1; 
-ws-icon-1 = 2; 
-ws-icon-2 = 3; 
+ws-icon-1 = 2;  
+ws-icon-2 = 3;  
 label-focused = %icon%
 label-unfocused = %icon%
 label-unfocused-foreground = #434c5e
+label-mode-padding = 10

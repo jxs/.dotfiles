@@ -285,9 +285,9 @@ function output() {
 
     # Showing the formatted message
     if [ "$isMuted" = "yes" ]; then
-        echo "${MUTED_COLOR}${MUTED_ICON}${curVol}%"
+        echo "${MUTED_COLOR}${MUTED_ICON}"
     else
-        echo "${volIcon}${curVol}%"
+        echo "${volIcon}"
     fi
 }
 
