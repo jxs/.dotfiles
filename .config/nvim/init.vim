@@ -9,7 +9,10 @@ Plug 'itchyny/lightline.vim'
 Plug 'itchyny/vim-gitbranch'
 Plug 'junegunn/fzf.vim'
 Plug 'neovim/nvim-lspconfig'
-Plug 'haorenW1025/completion-nvim'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/vim-vsnip'
 Plug 'mbbill/undotree'
 Plug 'chaoren/vim-wordmotion'
 Plug 'tpope/vim-surround'
@@ -45,36 +48,11 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 set undofile
 set undodir=~/.config/nvim/undo/
 " Lsp config
-lua <<EOF
-  local nvim_lsp = require'lspconfig'
-  local util = require'lspconfig/util'
-
-  nvim_lsp.rust_analyzer.setup({
-    cmd = {"rust-analyzer"};
-  })
-EOF
-" Set completeopt to have a better completion experience
-set completeopt=menuone,noinsert,noselect
+lua require('lsp')
 " Avoid showing message extra message when using completion
 set shortmess+=c
 " 2 spaces default for yaml
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
-let g:completion_enable_auto_popup = 0
-let g:completion_chain_complete_list = {
-            \ 'default': {
-            \   'default': [
-            \      {'complete_items': ['lsp', 'snippet']},
-            \      {'mode': '<c-n>'},
-            \   ],
-            \   'string': [
-            \      {'complete_items': ['path']},
-            \   ],
-            \   'comment': [
-            \      {'complete_items': ['path']},
-            \   ],
-            \ },
-            \ }
-autocmd BufEnter * lua require'completion'.on_attach()
 
 "share clipboard with OS
 set clipboard=unnamedplus
@@ -107,14 +85,6 @@ nnoremap <silent> <leader>e :FZFExplore<CR>
 nnoremap <silent> <leader>c :bd<CR>
 nnoremap <silent> <leader>l :Rgz<CR>
 nnoremap <silent> <Esc><Esc> :noh<CR><Esc>
-" inoremap <silent><expr> <M-Tab> completion#trigger_completion()
-function! s:check_back_space() abort
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~ '\s'
-endfunction
-inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" :
-            \ <SID>check_back_space() ? "\<TAB>" :
-            \ completion#trigger_completion()
 nnoremap <silent> gD <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> gr <cmd>lua vim.lsp.buf.rename()<CR>
 imap <C-BS> <C-W>

@@ -11,6 +11,7 @@ export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
 alias cat='bat'
 alias vim='nvim'
 alias gb='git rev-parse --abbrev-ref HEAD'
+
 # -- load zgen
 source "/usr/share/zsh/share/zgen.zsh"
 

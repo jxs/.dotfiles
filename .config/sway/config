@@ -157,6 +157,7 @@ assign [title="Telegram"] 3
 for_window [app_id="org.gnome.Nautilus"] floating enable
 for_window [app_id="gnome-system-monitor"] floating enable
 for_window [app_id="eog"] floating enable
+for_window [app_id="com.github.parnold_x.nasc"] floating enable
 for_window [class="Blueman-manager"] floating enable
 for_window [app_id="file-roller"] floating enable
 for_window [app_id="pavucontrol"] floating enable
