@@ -1,9 +1,9 @@
 configuration {
     modi: "drun,window,combi,calc";
-    theme: "slate";
     font: "Liberation Sans 12";
     show-icons: true;
     matching: "fuzzy";
     combi-modi: "drun,window,calc";
     terminal: "kitty";
 }
+@theme "slate"

@@ -9,8 +9,8 @@ swaylock \
 	--clock \
 	--indicator \
 	--indicator-radius 100 \
-    --indicator-x-position 1720 \
-    --indicator-y-position 920 \
+    --indicator-x-position 1780 \
+    --indicator-y-position 1060 \
 	--effect-blur 7x5 \
 	--ring-color $color1 \
     --inside-clear-color $color1 \

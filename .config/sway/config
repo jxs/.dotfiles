@@ -9,6 +9,9 @@ exec "libinput-gestures-setup start"
 exec mako
 exec "eval $(ssh-agent)"
 
+# import pipewire variables
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+
 # lock on suspend
 exec swayidle -w lock '/home/jxs/.config/sway/lock.sh' before-sleep '/home/jxs/.config/sway/lock.sh'
 
@@ -29,7 +32,7 @@ title_align center
 font pango: Liberation Sans 12
 # set background color
 # output * bg #1d1f21 solid_color
-output * background "~/.config/sway/wallpaper.jpg" fill
+output * background "~/.config/sway/lunar.png" fill
 # focus window on activation
 focus_on_window_activation focus
 
@@ -42,6 +45,11 @@ input type:keyboard {
 input type:touchpad {
     tap enabled
     drag disabled
+    pointer_accel 0.2
+}
+
+input type:touch {
+    events disabled
 }
 
 # KEYBINDINGS
@@ -54,9 +62,9 @@ bindsym XF86MonBrightnessDown exec ~/.config/sway/brightness.sh down
 # bindsym XF86PlayPause exec --no-startup-id playerctl --player=playerctld play-pause
 bindsym Print exec grim -g "$(slurp -b 110b0e70)" - | wl-copy
 bindsym Shift+Print exec grim - | wl-copy
-bindsym $mod+F4 exec --no-startup-id playerctl --player=playerctld play-pause
-bindsym $mod+F5 exec --no-startup-id playerctl --player=playerctld previous
-bindsym $mod+F6 exec --no-startup-id playerctl --player=playerctld next
+bindsym XF86AudioPlay exec --no-startup-id playerctl --player=playerctld play-pause
+bindsym XF86AudioPrev exec --no-startup-id playerctl --player=playerctld previous
+bindsym XF86AudioNext exec --no-startup-id playerctl --player=playerctld next
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -155,6 +163,7 @@ assign [title="Telegram"] 3
 
 # FLOATING WINDOWS
 for_window [app_id="org.gnome.Nautilus"] floating enable
+for_window [app_id="nemo"] floating enable
 for_window [app_id="gnome-system-monitor"] floating enable
 for_window [app_id="eog"] floating enable
 for_window [app_id="com.github.parnold_x.nasc"] floating enable
@@ -181,3 +190,11 @@ client.unfocused        $base01 $base01 $base04 $base01 $base01
 client.urgent           $base01 $base05 $base01 $base05 $base05
 client.placeholder      $base01 $base01 $base04 $base01 $base01
 
+set $gnome-schema org.gnome.desktop.interface
+
+exec_always {
+    gsettings set $gnome-schema gtk-theme 'Material-Black-Blueberry'
+    gsettings set $gnome-schema icon-theme 'ePapirus'
+    gsettings set $gnome-schema cursor-theme 'Breeze'
+    gsettings set $gnome-schema font-name 'Liberation Sans'
+}

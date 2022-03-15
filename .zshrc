@@ -18,6 +18,7 @@ source "/usr/share/zsh/share/zgen.zsh"
 # -- zgen packages
 if ! zgen saved; then
     zgen oh-my-zsh
+    zgen oh-my-zsh plugins/pass
     zgen load zsh-users/zsh-autosuggestions
     zgen load 'wfxr/forgit'
 

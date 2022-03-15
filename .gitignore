@@ -83,7 +83,6 @@
 /.emacs.d
 /.flow-typed/
 /.ftcurlish.json
-/.fzf
 /.gem
 /.gh-credentials
 /.gist

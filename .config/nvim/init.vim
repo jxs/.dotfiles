@@ -10,9 +10,9 @@ Plug 'itchyny/vim-gitbranch'
 Plug 'junegunn/fzf.vim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-vsnip'
-Plug 'hrsh7th/vim-vsnip'
 Plug 'mbbill/undotree'
 Plug 'chaoren/vim-wordmotion'
 Plug 'tpope/vim-surround'
@@ -77,7 +77,7 @@ set gdefault   " when on, the :substitute flag 'g' is default on
 
 " Key mappings
 " ====================================================================
-let mapleader = "\<C-x>"
+let mapleader = "\,"
 nnoremap <silent><leader>u :UndotreeToggle<CR><C-w>h
 nnoremap <silent> <leader>b :Buffers<CR>
 nnoremap <silent> <leader>f :GFiles -c --others --exclude-standard<CR>
