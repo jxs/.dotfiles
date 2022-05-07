@@ -44,6 +44,13 @@ cmp.setup({
 
 nvim_lsp.rust_analyzer.setup({
     cmd = {"rust-analyzer"};
+    settings = {
+        ["rust-analyzer"] = {
+            cargo = {
+                allFeatures = true
+            },
+        },
+    };
     capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 })
 
