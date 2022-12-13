@@ -2,22 +2,26 @@
 " ====================================================================
 call plug#begin('~/.config/nvim/plugs/')
 
-Plug 'editorconfig/editorconfig-vim'
 Plug 'rust-lang/rust.vim'
+Plug 'cespare/vim-toml'
 Plug 'tpope/vim-commentary'
 Plug 'itchyny/lightline.vim'
-Plug 'itchyny/vim-gitbranch'
 Plug 'junegunn/fzf.vim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-cmp'
-Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'windwp/nvim-autopairs'
+Plug 'simrat39/rust-tools.nvim'
 Plug 'mbbill/undotree'
 Plug 'chaoren/vim-wordmotion'
 Plug 'tpope/vim-surround'
 Plug 'terryma/vim-smooth-scroll'
-Plug 'cespare/vim-toml'
 
 call plug#end()
 " Theme
@@ -31,7 +35,7 @@ let g:lightline = {
       \             [ 'readonly', 'filename', 'filetype', 'modified' ] ],
       \   'right': [ [ 'lineinfo' ],
       \              [ 'percent' ],
-      \              [ 'gitbranch', 'fileencoding', 'fileformat'] ]
+      \              [ 'fileencoding', 'fileformat'] ]
       \ },
       \ 'component_function': {
       \   'gitbranch': 'gitbranch#name'
@@ -61,6 +65,8 @@ set title
 set backspace=indent,eol,start
 "fzf config
 let g:fzf_layout = { 'down': '30%' }
+"Rust config
+let g:rustfmt_autosave = 1
 " Indentation
 " ====================================================================
 set expandtab     " replace <Tab> with spaces
@@ -86,7 +92,9 @@ nnoremap <silent> <leader>c :bd<CR>
 nnoremap <silent> <leader>l :Rgz<CR>
 nnoremap <silent> <Esc><Esc> :noh<CR><Esc>
 nnoremap <silent> gD <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> gd <cmd>lua vim.lsp.buf.implementation()<CR>
 nnoremap <silent> gr <cmd>lua vim.lsp.buf.rename()<CR>
+nnoremap <silent> ga <cmd>lua vim.lsp.buf.code_action()<CR>
 imap <C-BS> <C-W>
 noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 20, 2)<CR>
 noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 20, 2)<CR>
