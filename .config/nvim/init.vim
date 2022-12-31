@@ -22,10 +22,12 @@ Plug 'mbbill/undotree'
 Plug 'chaoren/vim-wordmotion'
 Plug 'tpope/vim-surround'
 Plug 'terryma/vim-smooth-scroll'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 call plug#end()
 " Theme
 " ====================================================================
+let g:palenight_terminal_italics = 1
 colorscheme palenight
 set noshowmode
 let g:lightline = {

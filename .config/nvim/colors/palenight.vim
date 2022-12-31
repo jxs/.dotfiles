@@ -98,41 +98,41 @@ let s:vertsplit = s:colors.vertsplit
 
 " Syntax Groups (descriptions and ordering from `:h w18`) {{{
 
-call s:h("Comment", { "fg": s:comment_grey, "gui": "italic", "cterm": "italic" }) " any comment
-call s:h("Constant", { "fg": s:dark_yellow}) " any constant
-call s:h("String", { "fg": s:green }) " a string constant: "this is a string"
-call s:h("Character", { "fg": s:green }) " a character constant: 'c', '\n'
-call s:h("Number", { "fg": s:dark_yellow }) " a number constant: 234, 0xff
 call s:h("Boolean", { "fg": s:red }) " a boolean constant: TRUE, false
-call s:h("Float", { "fg": s:dark_yellow }) " a floating point constant: 2.3e10
-call s:h("Identifier", { "fg": s:red }) " any variable name
-call s:h("Function", { "fg": s:blue }) " function name (also: methods for classes)
-call s:h("Statement", { "fg": s:purple }) " any statement
+call s:h("Character", { "fg": s:green }) " a character constant: 'c', '\n'
+call s:h("Comment", { "fg": s:comment_grey, "gui": "italic", "cterm": "italic" }) " any comment
 call s:h("Conditional", { "fg": s:purple }) " if, then, else, endif, switch, etc.
-call s:h("Repeat", { "fg": s:purple }) " for, do, while, etc.
-call s:h("Label", { "fg": s:purple }) " case, default, etc.
-call s:h("Operator", { "fg": s:white}) " sizeof", "+", "*", etc.
-call s:h("Keyword", { "fg": s:red }) " any other keyword
-call s:h("Exception", { "fg": s:purple }) " try, catch, throw
-call s:h("PreProc", { "fg": s:yellow }) " generic Preprocessor
-call s:h("Include", { "fg": s:blue }) " preprocessor #include
+call s:h("Constant", { "fg": s:dark_yellow}) " any constant
+call s:h("Debug", {}) " debugging statements
 call s:h("Define", { "fg": s:purple }) " preprocessor #define
+call s:h("Delimiter", {}) " character that needs attention
+call s:h("Error", { "fg": s:red }) " any erroneous construct
+call s:h("Exception", { "fg": s:purple }) " try, catch, throw
+call s:h("Float", { "fg": s:dark_yellow }) " a floating point constant: 2.3e10
+call s:h("Function", { "fg": s:blue }) " function name (also: methods for classes)
+call s:h("Identifier", { "fg": s:red }) " any variable name
+call s:h("Ignore", {}) " left blank, hidden
+call s:h("Include", { "fg": s:blue }) " preprocessor #include
+call s:h("Keyword", { "fg": s:red }) " any other keyword
+call s:h("Label", { "fg": s:purple }) " case, default, etc.
 call s:h("Macro", { "fg": s:purple }) " same as Define
+call s:h("Number", { "fg": s:dark_yellow }) " a number constant: 234, 0xff
+call s:h("Operator", { "fg": s:white}) " sizeof", "+", "*", etc.
 call s:h("PreCondit", { "fg": s:yellow }) " preprocessor #if, #else, #endif, etc.
-call s:h("Type", { "fg": s:yellow }) " int, long, char, etc.
-call s:h("StorageClass", { "fg": s:yellow }) " static, register, volatile, etc.
-call s:h("Structure", { "fg": s:yellow }) " struct, union, enum, etc.
-call s:h("Typedef", { "fg": s:yellow }) " A typedef
+call s:h("PreProc", { "fg": s:yellow }) " generic Preprocessor
+call s:h("Repeat", { "fg": s:purple }) " for, do, while, etc.
 call s:h("Special", { "fg": s:blue }) " any special symbol
 call s:h("SpecialChar", {}) " special character in a constant
-call s:h("Tag", {}) " you can use CTRL-] on this
-call s:h("Delimiter", {}) " character that needs attention
 call s:h("SpecialComment", { "fg": s:comment_grey }) " special things inside a comment
-call s:h("Debug", {}) " debugging statements
-call s:h("Underlined", { "gui": "underline", "cterm": "underline" }) " text that stands out, HTML links
-call s:h("Ignore", {}) " left blank, hidden
-call s:h("Error", { "fg": s:red }) " any erroneous construct
+call s:h("Statement", { "fg": s:purple }) " any statement
+call s:h("StorageClass", { "fg": s:yellow }) " static, register, volatile, etc.
+call s:h("String", { "fg": s:green }) " a string constant: "this is a string"
+call s:h("Structure", { "fg": s:yellow }) " struct, union, enum, etc.
+call s:h("Tag", {}) " you can use CTRL-] on this
 call s:h("Todo", { "fg": s:purple }) " anything that needs extra attention; mostly the keywords TODO FIXME and XXX
+call s:h("Type", { "fg": s:yellow }) " int, long, char, etc.
+call s:h("Typedef", { "fg": s:yellow }) " A typedef
+call s:h("Underlined", { "gui": "underline", "cterm": "underline" }) " text that stands out, HTML links
 
 " }}}
 
@@ -338,53 +338,6 @@ call s:h("mkdLink", { "fg": s:white })
 call s:h("markdownLinkDelimiter", { "fg": s:white })
 call s:h("mkdURL", { "fg": s:light_red })
 
-" Ruby
-call s:h("rubyAccess", { "fg": s:cyan })
-call s:h("rubyBlockParameter", { "fg": s:yellow})
-call s:h("rubyBlockParameterList", { "fg": s:white })
-call s:h("rubyBoolean", { "fg": s:red })
-call s:h("rubyCapitalizedMethod", { "fg": s:blue})
-call s:h("rubyClass", { "fg": s:purple})
-call s:h("rubyClassName", { "fg": s:yellow })
-call s:h("rubyConstant", { "fg": s:yellow })
-call s:h("rubyControl", { "fg": s:purple })
-call s:h("rubyEscape", { "fg": s:red})
-call s:h("rubyFunction", { "fg": s:blue})
-call s:h("rubyGlobalVariable", { "fg": s:red})
-call s:h("rubyInclude", { "fg": s:cyan})
-call s:h("rubyIncluderubyGlobalVariable", { "fg": s:red})
-call s:h("rubyInstanceVariable", { "fg": s:red})
-call s:h("rubyInterpolation", { "fg": s:cyan })
-call s:h("rubyInterpolationDelimiter", { "fg": s:red })
-call s:h("rubyModuleName", { "fg": s:white })
-call s:h("rubyKeyword", { "fg": s:purple })
-call s:h("rubyKeywordAsMethod", { "fg": s:cyan})
-call s:h("rubyOperator", { "fg": s:purple })
-call s:h("rubyPredefinedConstant", { "fg": s:yellow})
-call s:h("rubyPseudoVariable", { "fg": s:blue })
-call s:h("rubyRegexp", { "fg": s:white})
-call s:h("rubyRegexpDelimiter", { "fg": s:cyan})
-call s:h("rubySharpBang", { "fg": s:comment_grey})
-call s:h("rubyStringDelimiter", { "fg": s:green})
-call s:h("rubySymbol", { "fg": s:blue})
-
-" ERb
-call s:h("erubyDelimiter", { "fg": s:red })
-
-" Rails
-call s:h("railsAssetPreProc", { "fg": s:comment_grey })
-call s:h("railsAssetInclude", { "fg": s:comment_grey })
-call s:h("railsAssetIncluded", { "fg": s:comment_grey })
-call s:h("rubyRailsMethod", { "fg": s:blue })
-call s:h("rubyRailsFilterMethod", { "fg": s:cyan })
-call s:h("rubyRailsRenderMethod", { "fg": s:cyan })
-call s:h("rubyRailsARAssociationMethod", { "fg": s:cyan })
-call s:h("rubyRailsHelperMethod", { "fg": s:cyan })
-
-" RSpec
-call s:h("rspecGroupMethods", { "fg": s:white })
-call s:h("rspecBeforeAndAfter", { "fg": s:white })
-
 " CSS
 call s:h("cssColor", { "fg": s:dark_yellow })
 call s:h("cssCommonAttr", { "fg": s:blue })
@@ -430,27 +383,6 @@ call s:h("xmlEndTag", { "fg": s:red })
 call s:h("xmlTag", { "fg": s:red })
 call s:h("xmlTagName", { "fg": s:red })
 
-" PHP
-call s:h("phpInclude", { "fg": s:purple })
-call s:h("phpClass", { "fg": s:yellow })
-call s:h("phpClasses", { "fg": s:yellow })
-call s:h("phpFunction", { "fg": s:blue })
-call s:h("phpType", { "fg": s:purple })
-call s:h("phpKeyword", { "fg": s:purple })
-call s:h("phpVarSelector", { "fg": s:white })
-call s:h("phpIdentifier", { "fg": s:white })
-call s:h("phpMethod", { "fg": s:blue })
-call s:h("phpBoolean", { "fg": s:blue })
-call s:h("phpParent", { "fg": s:white })
-call s:h("phpOperator", { "fg": s:purple })
-call s:h("phpRegion", { "fg": s:purple })
-call s:h("phpUseNamespaceSeparator", { "fg": s:white })
-call s:h("phpClassNamespaceSeparator", { "fg": s:white })
-call s:h("phpDocTags", { "fg": s:purple, "gui": "italic", "cterm": "italic" })
-call s:h("phpDocParam", { "fg": s:purple, "gui": "italic", "cterm": "italic" })
-
-" }}}
-
 " Plugin Highlighting {{{
 
 " airblade/vim-gitgutter
@@ -485,6 +417,70 @@ call s:h("VistaLineNr", { "fg": s:comment_grey })
 call s:h("VistaArgs", { "fg": s:comment_grey })
 call s:h("VistaKind", { "fg": s:comment_grey })
 call s:h("VistaScopeKind", { "fg": s:yellow })
+
+" nvim-treesitter
+
+call s:h("@string", { "fg": s:green })
+call s:h("@string.regex", { "fg": s:white })
+call s:h("@string.escape", { "fg": s:visual_grey })
+call s:h("@string.special", { "fg": s:menu_grey })
+call s:h("@variable", { "fg": s:white })
+call s:h("@variable.builtin", { "fg": s:dark_yellow })
+call s:h("@annotation", { "fg": s:yellow })
+call s:h("@comment", { "fg": s:comment_grey })
+call s:h("@constant", { "fg": s:dark_yellow })
+call s:h("@constant.builtin", { "fg": s:yellow })
+call s:h("@constant.macro", { "fg": s:dark_red })
+call s:h("@text.reference", { "fg": s:cyan })
+call s:h("@text.environment", { "fg": s:light_red })
+call s:h("@text.environment.name", { "fg": s:cyan })
+call s:h("@constructor", { "fg": s:cyan })
+call s:h("@coditional", { "fg": s:purple })
+call s:h("@character", { "fg": s:green })
+call s:h("@character.special", { "fg": s:blue_purple })
+call s:h("@function", { "fg": s:blue })
+call s:h("@function.call", { "fg": s:blue })
+call s:h("@function.builtin", { "fg": s:blue })
+call s:h("@function.macro", { "fg": s:purple, "gui": "italic" })
+call s:h("@attribute", { "fg": s:light_red })
+call s:h("@keyword", { "fg": s:red, "gui": "italic" })
+call s:h("@keyword.function", { "fg": s:blue_purple, "gui": "italic" })
+call s:h("@keyword.operator", { "fg": s:white })
+call s:h("@keyword.return", { "fg": s:white })
+call s:h("@method", { "fg": s:cyan })
+call s:h("@method.call", { "fg": s:cyan })
+call s:h("@namespace", { "fg": s:blue_purple })
+call s:h("@number", { "fg": s:dark_yellow })
+call s:h("@operator", { "fg": s:white })
+call s:h("@parameter", { "fg": s:white, "gui": "italic" })
+call s:h("@parameter.reference", { "fg": s:menu_grey })
+call s:h("@property", { "fg": s:yellow })
+call s:h("@punctuation.delimiter", { "fg": s:white })
+call s:h("@punctuation.bracket", { "fg": s:white })
+call s:h("@punctuation.special", { "fg": s:white })
+call s:h("@repeat", { "fg": s:blue_purple })
+call s:h("@tag", { "fg": s:light_red })
+call s:h("@tag.delimiter", { "fg": s:white })
+call s:h("@tag.attribute", { "fg": s:green })
+call s:h("@type", { "fg": s:yellow })
+call s:h("@type.builtin", { "fg": s:dark_yellow })
+call s:h("@type.qualifier", { "fg": s:yellow })
+call s:h("@exception", { "fg": s:purple })
+call s:h("@field", { "fg": s:white })
+call s:h("@float", { "fg": s:dark_yellow })
+call s:h("@boolean", { "fg": s:red, "gui": "italic" })
+call s:h("@symbol", { "fg": s:red })
+call s:h("@define", { "fg": s:yellow })
+call s:h("@todo", { "fg": s:purple })
+call s:h("@storageclass", { "gui": "italic" })
+call s:h("@text.strong", { "gui": "bold" })
+call s:h("@text.emphasis", { "gui": "italic" })
+call s:h("@text.underline", { "gui": "underline" })
+call s:h("@text.strike", { "gui": "strikethrough" })
+call s:h("@text.title", { "fg": s:yellow, "gui": "bold" })
+call s:h("@text.literal", { "fg": s:yellow })
+call s:h("@text.warning", { "fg": s:yellow })
+call s:h("@text.danger", { "fg": s:dark_yellow })
 
 " }}}
 
@@ -559,5 +555,4 @@ endif
 " }}}
 
 " Must appear at the end of the file to work around this oddity:
-" https://groups.google.com/forum/#!msg/vim_dev/afPqwAFNdrU/nqh6tOM87QUJ
-
+" https://groups.google.com/forum/#!msg/vim_dev/afPqwAFNdrU/nqh6tOM87QUJgroup
