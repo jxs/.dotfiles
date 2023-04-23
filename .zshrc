@@ -10,6 +10,7 @@ export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
 # -- aliases
 alias cat='bat'
 alias vim='nvim'
+alias vim-new='NVIM_APPNAME=nvim_new nvim'
 alias gb='git rev-parse --abbrev-ref HEAD'
 
 # -- load zgen
