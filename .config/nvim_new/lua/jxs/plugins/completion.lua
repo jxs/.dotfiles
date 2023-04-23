@@ -53,6 +53,17 @@ return {
             end
           end,
         },
+        formatting = {
+          fields = { 'abbr', 'kind', 'menu' },
+          format = function(entry, vim_item)
+            vim_item.menu = ({
+              buffer = "[Buffer]",
+              nvim_lsp = "[LSP]",
+              vsnip = "[VSnip]",
+            })[entry.source.name]
+            return vim_item
+          end
+        },
         sources = {
           { name = 'path' },
           { name = 'nvim_lsp' },
