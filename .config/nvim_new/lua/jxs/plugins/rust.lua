@@ -21,7 +21,11 @@ return {
             }
           }
         },
-        on_attach = function(_client, bufnr)
+        on_attach = function(client, bufnr)
+          -- disable LSP semantic highlighting
+          client.server_capabilities.semanticTokensProvider = nil
+
+          -- LSP specific mappings
           local nmap = function(keys, func)
             vim.keymap.set('n', keys, func, { buffer = bufnr })
           end
