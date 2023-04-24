@@ -25,6 +25,7 @@ return {
   {
     'jxs/palenight.vim',
     priority = 1000, -- load this plugin first
+    branch = 'feat/diagnostics-highlights',
     init = function()
       vim.g.palenight_terminal_italics = 1
       vim.g.palenight_color_overrides = {
