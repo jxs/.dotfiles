@@ -28,20 +28,6 @@ require('lazy').setup('jxs/plugins', {
   ui = {
     border = "rounded"
   },
-  -- performance = {
-  --   rtp = {
-  --     disabled_plugins = {
-  --       "gzip",
-  --       "matchit",
-  --       "matchparen",
-  --       "netrwPlugin",
-  --       "tarPlugin",
-  --       "tohtml",
-  --       "tutor",
-  --       "zipPlugin",
-  --     },
-  --   },
-  -- },
 })
 
 vim.keymap.set('n', '<leader>z', '<cmd>:Lazy<cr>', { desc = "Plugin Manager" })

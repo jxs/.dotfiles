@@ -1,12 +1,13 @@
-local check_back_space = function()
-  local col = vim.fn.col('.' - 1)
-  return col == 0 or vim.fn.getline('.'):sub(col, col):match '%s' ~= nil
+local has_words_before = function()
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match '%s' == nil
 end
 
 return {
   {
     'windwp/nvim-autopairs',
-    lazy = true
+    lazy = true,
+    config = true
   },
   {
     'hrsh7th/nvim-cmp',
@@ -31,7 +32,7 @@ return {
         },
         snippet = {
           expand = function(args)
-            require("luasnip").lsp_expand(args.body)
+            vim.fn["vsnip#anonymous"](args.body)
           end,
         },
         mapping = {
@@ -46,7 +47,7 @@ return {
               cmp.select_next_item()
             elseif vim.fn['vsnip#jumpable'](1) > 0 then
               vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<Plug>(vsnip-jump-next)', true, false, true))
-            elseif not check_back_space() then
+            elseif has_words_before() then
               cmp.mapping.complete()(core, fallback)
             else
               vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<Tab>', true, true, true), 'n')

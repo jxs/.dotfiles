@@ -24,6 +24,7 @@ return {
 
       -- Search pattern across repository files
       vim.cmd [[
+        let s:current_path = ""
         function! FzfExplore(...)
           let inpath = substitute(a:1, "'", '', 'g')
           let s:current_path = inpath == "" ? expand('%:p:h') : s:current_path

@@ -1,7 +1,7 @@
 return {
   {
     'simrat39/rust-tools.nvim',
-    dependencies = { 'neovim/nvim-lspconfig' },
+    dependencies = { 'neovim/nvim-lspconfig', { 'j-hui/fidget.nvim', config = true } },
     ft = { 'rust' },
     opts = {
       -- rust-tools options
@@ -84,8 +84,8 @@ return {
       vim.diagnostic.config({
         signs = true,
         underline = true,
-        update_in_insert = true,
-        virtual_text = false,
+        update_in_insert = false,
+        virtual_text = true,
         severity_sort = false,
         float = {
           border = 'rounded',

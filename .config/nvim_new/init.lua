@@ -35,11 +35,13 @@ vim.opt.gdefault = true -- when on, the :substitute flag 'g' is default on
 
 -- Key mappings
 -- ==================================================================
-vim.g.mapleader = '\\,'
+vim.g.mapleader = ','
 
 vim.keymap.set('n', '<esc><esc>', ':noh<cr>')
 vim.keymap.set('n', '<PageUp>', '<nop>')
 vim.keymap.set('n', '<PageDown>', '<nop>')
+vim.keymap.set('n', '\'', '/')
+vim.keymap.set('n', '<leader>c', ':bd<cr>')
 
 -- Load plugins using lazy.nvim
 -- ==================================================================
