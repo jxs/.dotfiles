@@ -90,6 +90,8 @@ return {
           { name = 'buffer' }
         }
       })
+
+      vim.cmd [[ hi CmpItemMenuDefault guifg=#4c566a ]]
     end
   }
 }

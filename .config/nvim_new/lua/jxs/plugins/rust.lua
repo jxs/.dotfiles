@@ -34,6 +34,9 @@ return {
           nmap('gd', vim.lsp.buf.implementation)
           nmap('gr', vim.lsp.buf.rename)
           nmap('ga', vim.lsp.buf.code_action)
+          nmap('K', vim.lsp.buf.hover)
+          nmap('<C-k>', vim.lsp.buf.signature_help)
+
 
           -- create a command `:Format` local to the LSP buffer
           vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
@@ -62,6 +65,22 @@ return {
     config = function(_, opts)
       require('rust-tools').setup(opts)
 
+      vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+        vim.lsp.handlers.hover, { border = 'rounded' }
+      )
+
+      vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
+        vim.lsp.handlers.signature_help, { border = 'rounded' }
+      )
+
+      -- define diagnostic signs highlights
+      local signs = { Error = "E", Warn = "W", Hint = "H", Info = "I" }
+      for type, icon in pairs(signs) do
+        local hl = "DiagnosticSign" .. type
+        vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+      end
+
+      -- configure diagnostic float window
       vim.diagnostic.config({
         signs = true,
         underline = true,
@@ -71,8 +90,8 @@ return {
         float = {
           border = 'rounded',
           source = 'always',
-          suffix = ' ',
-          prefix = ' ',
+          -- suffix = ' ',
+          -- prefix = ' ',
           header = '',
           scope = 'cursor',
           wrap = true,

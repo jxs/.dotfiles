@@ -10,10 +10,10 @@ return {
   {
     'terryma/vim-smooth-scroll',
     keys = {
-      { '<c-u>', '<cmd>call smooth_scroll#up(&scroll, 20, 2)<cr>'  },
-      { '<c-d>', '<cmd>call smooth_scroll#down(&scroll, 20, 2)<cr>'  },
-      { '<c-b>', '<cmd>call smooth_scroll#up(&scroll*2, 20, 4)<cr>'  },
-      { '<c-f>', '<cmd>call smooth_scroll#down(&scroll*2, 20, 4)<cr>'  },
+      { '<c-u>', '<cmd>call smooth_scroll#up(&scroll, 20, 2)<cr>' },
+      { '<c-d>', '<cmd>call smooth_scroll#down(&scroll, 20, 2)<cr>' },
+      { '<c-b>', '<cmd>call smooth_scroll#up(&scroll*2, 20, 4)<cr>' },
+      { '<c-f>', '<cmd>call smooth_scroll#down(&scroll*2, 20, 4)<cr>' },
     }
   },
   {
@@ -35,6 +35,11 @@ return {
     end,
     config = function()
       vim.cmd.colorscheme 'palenight'
+
+      vim.cmd [[
+        hi Pmenu guibg=#171819
+        hi FloatBorder guifg=#bfc7d5
+      ]]
     end
   },
   {

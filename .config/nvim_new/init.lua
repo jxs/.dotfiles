@@ -10,8 +10,14 @@ vim.opt.undofile = true
 vim.opt.undodir = vim.fn.stdpath('state') .. '/undo'
 vim.opt.shortmess:append({ c = true }) -- Avoid showing message extra message when using completion
 vim.opt.clipboard = 'unnamedplus' -- Share clipboard with OS
+vim.opt.completeopt = 'menuone,noselect' -- Set completeopt to have a better completion experience
 vim.opt.termguicolors = true
 vim.opt.title = true
+
+-- Decrease update time
+vim.opt.updatetime = 250
+vim.opt.timeout = true
+vim.opt.timeoutlen = 300
 
 -- Indentation
 -- ==================================================================

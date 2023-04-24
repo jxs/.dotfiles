@@ -25,6 +25,9 @@ require('lazy').setup('jxs/plugins', {
     -- automatically check for config file changes and reload the ui
     enabled = false,
   },
+  ui = {
+    border = "rounded"
+  },
   -- performance = {
   --   rtp = {
   --     disabled_plugins = {
