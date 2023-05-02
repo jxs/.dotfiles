@@ -1,5 +1,4 @@
 return {
-  -- { 'luafun/luafun', build = 'cp fun.lua lua' },
   {
     'chaoren/vim-wordmotion',
     event = { "BufReadPost", "BufNewFile" }
@@ -27,7 +26,6 @@ return {
     'jxs/palenight.vim',
     priority = 1000, -- load this plugin first
     branch = 'feat/diagnostics-highlights',
-    disabled = true,
     config = function()
       vim.g.palenight_color_overrides = {
         blue = { gui = '#66a1ff', cterm = '39', cterm16 = '4' },
