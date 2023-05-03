@@ -52,5 +52,39 @@ require('jxs/lazy')
 -- ==================================================================
 vim.cmd [[ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o ]]
 
--- 2 spaces default for yaml
-vim.cmd [[ autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab ]]
+-- 2 spaces default for yaml and lua
+vim.cmd [[ autocmd FileType yaml,lua setlocal ts=2 sts=2 sw=2 expandtab ]]
+
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+  callback = function(ev)
+    local bufnr = ev.buf
+    local client = vim.lsp.get_client_by_id(ev.data.client_id)
+
+    -- Disable semantic tokens for all LSPs
+    client.server_capabilities.semanticTokensProvider = nil
+
+    -- Buffer local mappings.
+    -- See `:help vim.lsp.*` for documentation on any of the below functions
+    local nmap = function(keys, func)
+      vim.keymap.set('n', keys, func, { buffer = bufnr })
+    end
+
+    nmap('gD', vim.lsp.buf.definition)
+    nmap('gd', vim.lsp.buf.implementation)
+    nmap('gr', vim.lsp.buf.rename)
+    nmap('ga', vim.lsp.buf.code_action)
+    nmap('K', vim.lsp.buf.hover)
+
+    -- create a command `:Format` local to the LSP buffer
+    vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
+      vim.lsp.buf.format()
+    end, { desc = 'Format current buffer with LSP' })
+
+    vim.api.nvim_create_autocmd('BufWritePre', {
+      group = vim.api.nvim_create_augroup('LspFormat.' .. bufnr, {}),
+      buffer = bufnr,
+      command = 'Format',
+    })
+  end,
+})

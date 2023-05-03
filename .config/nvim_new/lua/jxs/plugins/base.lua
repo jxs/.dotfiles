@@ -26,15 +26,13 @@ return {
     'jxs/palenight.vim',
     priority = 1000, -- load this plugin first
     branch = 'feat/diagnostics-highlights',
-    init = function()
-      vim.g.palenight_terminal_italics = 1
+    config = function()
       vim.g.palenight_color_overrides = {
         blue = { gui = '#66a1ff', cterm = '39', cterm16 = '4' },
         cyan = { gui = '#01b1a4', cterm = '38', cterm16 = '6' },
         black = { gui = '#171819', cterm = '235', cterm16 = '0' }
       }
-    end,
-    config = function()
+
       vim.cmd.colorscheme 'palenight'
 
       vim.cmd [[
