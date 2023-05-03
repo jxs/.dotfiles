@@ -13,6 +13,7 @@ vim.opt.clipboard = 'unnamedplus' -- Share clipboard with OS
 vim.opt.completeopt = 'menuone,noselect' -- Set completeopt to have a better completion experience
 vim.opt.termguicolors = true
 vim.opt.title = true
+vim.opt.swapfile = false
 
 -- Decrease update time
 vim.opt.updatetime = 250
