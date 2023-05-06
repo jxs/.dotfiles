@@ -1,6 +1,6 @@
 # -- variables
 export SHELL="/usr/bin/zsh"
-export TERM=xterm-256color
+export TERM=xterm-kitty
 export COLORTERM=truecolor
 export ZSH_THEME="arrow"
 export EDITOR='nvim'
