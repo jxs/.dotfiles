@@ -5,8 +5,8 @@ return {
     dependencies = {
       { 'williamboman/mason.nvim' },
       { 'williamboman/mason-lspconfig.nvim' },
-      { 'folke/neodev.nvim', config = true },
-      { 'j-hui/fidget.nvim', config = true },
+      { 'folke/neodev.nvim',                config = true },
+      { 'j-hui/fidget.nvim',                config = true },
     },
     opts = {
       -- LSP servers to automatically install and their configs
@@ -26,9 +26,6 @@ return {
             },
           },
         },
-
-        -- BashLS options
-        bashls = {},
 
         -- Use rust-tools to setup rust-analyzer
         rust_analyzer = function()
@@ -101,7 +98,6 @@ return {
       })
 
       mason.setup_handlers(setup_handlers)
-
     end
   },
   {
