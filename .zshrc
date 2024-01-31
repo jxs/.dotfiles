@@ -5,12 +5,13 @@ export COLORTERM=truecolor
 export ZSH_THEME="arrow"
 export EDITOR='nvim'
 export LANG=en_US.UTF-8
-export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
+export PATH=$PATH:/home/jxs/.cargo/bin
 
 # -- aliases
 alias cat='bat'
 alias vim='nvim'
 alias gb='git rev-parse --abbrev-ref HEAD'
+alias ssh="kitty +kitten ssh"
 
 # -- load zgen
 source "/usr/share/zsh/share/zgen.zsh"

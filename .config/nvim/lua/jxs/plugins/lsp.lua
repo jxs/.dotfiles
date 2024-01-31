@@ -6,7 +6,7 @@ return {
       { 'williamboman/mason.nvim' },
       { 'williamboman/mason-lspconfig.nvim' },
       { 'folke/neodev.nvim',                config = true },
-      { 'j-hui/fidget.nvim',                config = true },
+      { 'j-hui/fidget.nvim',                config = true, tag = "legacy" },
     },
     opts = {
       -- LSP servers to automatically install and their configs
@@ -27,10 +27,13 @@ return {
           },
         },
 
-        -- Use rust-tools to setup rust-analyzer
+        -- Use rustaceanvim to setup rust-analyzer
         rust_analyzer = function()
-          require('rust-tools')
+          require('rustaceanvim')
         end
+      },
+      inlay_hints = {
+        enabled = true,
       },
       -- vim.diagnostic options
       diagnostics = {
@@ -101,24 +104,23 @@ return {
     end
   },
   {
-    'simrat39/rust-tools.nvim',
-    lazy = true, -- rust-tools will be loaded by mason-lspconfig
-    opts = {
-      -- rust-tools options
-      tools = {
-        inlay_hints = {
-          show_parameter_hints = false,
-          only_current_line = true,
-          highlight = "LineNr"
-        }
-      },
-      -- lspconfig options
-      server = {
-        settings = {
-          ["rust-analyzer"] = { cargo = { allFeatures = true } }
-        }
+    'mrcjkb/rustaceanvim',
+    version = '^4',
+    lazy = true,     -- rustaceanvim will be loaded by mason-lspconfig
+    config = false,
+    init = function()
+      vim.g.rustaceanvim = {
+        -- LSP configuration
+        server = {
+          default_settings = {
+            -- rust-analyzer language server configuration
+            ['rust-analyzer'] = {
+              cargo = { allFeatures = true }
+            },
+          },
+        },
       }
-    }
+    end
   },
   {
     'williamboman/mason.nvim',

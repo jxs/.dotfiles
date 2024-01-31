@@ -5,15 +5,17 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.signcolumn = "yes" -- keep signcolumn on by default
 vim.opt.foldenable = false
-vim.opt.autochdir = true
 vim.opt.undofile = true
 vim.opt.undodir = vim.fn.stdpath('state') .. '/undo'
-vim.opt.shortmess:append({ c = true }) -- Avoid showing message extra message when using completion
-vim.opt.clipboard = 'unnamedplus' -- Share clipboard with OS
+vim.opt.shortmess:append({ c = true })   -- Avoid showing message extra message when using completion
+vim.opt.clipboard = 'unnamedplus'        -- Share clipboard with OS
 vim.opt.completeopt = 'menuone,noselect' -- Set completeopt to have a better completion experience
 vim.opt.termguicolors = true
 vim.opt.title = true
 vim.opt.swapfile = false
+vim.opt.jumpoptions = "stack"
+vim.opt.showmatch = true
+vim.opt.matchpairs:append('<:>')
 
 -- Decrease update time
 vim.opt.updatetime = 250
@@ -32,7 +34,7 @@ vim.opt.softtabstop = 4   -- remove <Tab> symbols as it was spaces
 -- ==================================================================
 vim.opt.ignorecase = true
 vim.opt.smartcase = true -- override the 'ignorecase' when there is uppercase letters
-vim.opt.gdefault = true -- when on, the :substitute flag 'g' is default on
+vim.opt.gdefault = true  -- when on, the :substitute flag 'g' is default on
 
 -- Key mappings
 -- ==================================================================
@@ -53,7 +55,7 @@ require('jxs/lazy')
 vim.cmd [[ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o ]]
 
 -- 2 spaces default for yaml and lua
-vim.cmd [[ autocmd FileType yaml,lua setlocal ts=2 sts=2 sw=2 expandtab ]]
+vim.cmd [[ autocmd FileType yaml,lua,typescriptreact,typescript setlocal ts=2 sts=2 sw=2 expandtab ]]
 
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
@@ -86,5 +88,20 @@ vim.api.nvim_create_autocmd('LspAttach', {
       buffer = bufnr,
       command = 'Format',
     })
+    --  show diagnostics floating window
+    vim.api.nvim_create_autocmd("CursorHold", {
+      callback = function()
+        vim.diagnostic.open_float(nil, {
+          focusable = false,
+          close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+        })
+      end
+    })
+    if client.server_capabilities.inlayHintProvider then
+      vim.keymap.set('n', 'gh', function()
+        local current_setting = vim.lsp.inlay_hint.is_enabled(bufnr)
+        vim.lsp.inlay_hint.enable(bufnr, not current_setting)
+      end, { noremap = true, silent = true, buffer = bufnr, desc = '[lsp] toggle inlay hints' })
+    end
   end,
 })

@@ -59,16 +59,16 @@ input type:touch {
 bindsym XF86AudioRaiseVolume exec ~/.config/i3/volume.sh up #increase sound volume
 bindsym XF86AudioLowerVolume exec ~/.config/i3/volume.sh down #decrease sound volume
 bindsym XF86AudioMute exec ~/.config/sway/volume.sh toggle
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 bindsym XF86MonBrightnessUp exec ~/.config/sway/brightness.sh up
 bindsym XF86MonBrightnessDown exec ~/.config/sway/brightness.sh down
-bindsym XF86AudioPlay exec --no-startup-id playerctl --player=playerctld play-pause
-bindsym XF86AudioPause exec --no-startup-id playerctl --player=playerctld play-pause
+bindsym XF86AudioPlay exec playerctl --player=playerctld play-pause
+bindsym XF86AudioPause exec playerctl --player=playerctld play-pause
 bindsym $mod+Print exec grim -g "$(slurp -b 110b0e70)" - | wl-copy
 bindsym $mod+Shift+Print exec grim - | wl-copy
-bindsym $mod+F4 exec --no-startup-id playerctl --player=playerctld play-pause
-bindsym $mod+F5 exec --no-startup-id playerctl --player=playerctld previous
-bindsym $mod+F6 exec --no-startup-id playerctl --player=playerctld next
+bindsym $mod+F4 exec playerctl --player=playerctld play-pause
+bindsym $mod+F5 exec playerctl --player=playerctld previous
+bindsym $mod+F6 exec playerctl --player=playerctld next
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -140,7 +140,9 @@ bindsym $mod+r mode "resize"
 # exit sway (logs you out of your X session)
 bindsym $mod+Shift+e exec "swaynag -t warning -m 'exit?' -B 'Yes' 'swaymsg exit'"
 # lock
-bindsym $mod+Shift+l exec --no-startup-id ~/.config/sway/lock.sh
+bindsym $mod+l exec ~/.config/sway/lock.sh
+# suspend
+bindsym $mod+Shift+l exec "systemctl suspend"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -167,13 +169,13 @@ assign [class="Thunderbird"] 2
 assign [title="Telegram"] 3
 
 # FLOATING WINDOWS
-for_window [app_id="org.gnome.Nautilus"] floating enable
-for_window [app_id="nemo"] floating enable
+for_window [app_id="Thunar"] floating enable
+for_window [app_id="thunar"] floating enable
+for_window [app_id="ristretto"] floating enable
+for_window [class="feh"] floating enable
 for_window [app_id="gnome-system-monitor"] floating enable
-for_window [app_id="eog"] floating enable
 for_window [app_id="com.github.parnold_x.nasc"] floating enable
 for_window [class="Blueman-manager"] floating enable
-for_window [app_id="file-roller"] floating enable
 for_window [app_id="pavucontrol"] floating enable
 
 # Base16 Tomorrow Night
@@ -186,6 +188,11 @@ set $base03 #ffffff
 set $base04 #5d605e
 set $base05 #cc6666
 set $base06 #282e33
+
+# Turn off display when lid is closed
+set $laptop eDP-1
+bindswitch --reload --locked lid:on output $laptop disable
+bindswitch --reload --locked lid:off output $laptop enable
 
 # Basic color configuration using the Base16 variables for windows and borders.
 # Property Name         Border  BG      Text    Indicator Child Border
@@ -200,6 +207,5 @@ set $gnome-schema org.gnome.desktop.interface
 exec_always {
     gsettings set $gnome-schema gtk-theme 'Material-Black-Blueberry'
     gsettings set $gnome-schema icon-theme 'ePapirus'
-    gsettings set $gnome-schema cursor-theme 'Breeze'
-    gsettings set $gnome-schema font-name 'Liberation Sans'
+    gsettings set $gnome-schema cursor-theme 'Dracula-cursors'
 }
