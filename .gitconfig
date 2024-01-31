@@ -8,8 +8,9 @@
 [core]
     pager = delta
 [delta]
-    syntax-theme = ZenBurn
+    syntax-theme = Monokai Extended
     features = line-numbers decorations
+    paging = always
 [interactive]
     diffFilter = delta --color-only
 [url "https://"]

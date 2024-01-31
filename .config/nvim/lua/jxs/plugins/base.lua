@@ -48,8 +48,8 @@ return {
         colorscheme = 'palenight',
         active = {
           left = {
-            { 'mode', 'paste' },
-            { 'readonly', 'filename', 'filetype', 'modified' }
+            { 'paste' },
+            { 'readonly', 'filename', 'relativepath', 'filetype', 'modified' }
           },
           right = {
             { 'lineinfo' },

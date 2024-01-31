@@ -3,14 +3,37 @@ return {
     'junegunn/fzf.vim',
     dependencies = { 'junegunn/fzf' },
     keys = {
-      { '<leader>f', '<cmd>GFiles -c --others --exclude-standard<cr>' },
-      { '<leader>e', '<cmd>FZFExplore<cr>' },
+      --   { '<leader>f', '<cmd>GFiles -c --others --exclude-standard<cr>' },
+      --   { '<leader>e', '<cmd>FZFExplore<cr>' },
       { '<leader>l', '<cmd>Rgz<cr>' },
-      { '<leader>b', '<cmd>Buffers<cr>' },
+      --   { '<leader>b', '<cmd>Buffers<cr>' },
     },
     init = function()
       vim.g.fzf_layout = { down = '30%' }
 
+      vim.g.fzf_colors = {
+        fg      = { 'fg', 'Normal' },
+        bg      = { 'bg', 'Normal' },
+        hl      = { 'fg', 'Comment' },
+        ['fg+'] = { 'fg', 'CursorLine', 'CursorColumn', 'Normal' },
+        ['bg+'] = { 'bg', 'CursorLine', 'CursorColumn' },
+        ['hl+'] = { 'fg', 'Statement' },
+        info    = { 'fg', 'PreProc' },
+        border  = { 'fg', 'Normal' },
+        prompt  = { 'fg', 'Conditional' },
+        pointer = { 'fg', 'Exception' },
+        marker  = { 'fg', 'Keyword' },
+        spinner = { 'fg', 'Label' },
+        header  = { 'fg', 'Comment' },
+        gutter  = { 'bg', 'Normal' },
+      }
+
+      -- https://github.com/junegunn/fzf/blob/master/README-VIM.md#hide-statusline
+      vim.cmd [[
+        autocmd! FileType fzf
+        autocmd  FileType fzf set laststatus=0 noshowmode noruler norelativenumber
+          \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+      ]]
       -- Search pattern across repository files
       vim.cmd [[
         function! RgFzf(...)
@@ -22,7 +45,7 @@ return {
         command! -bang -nargs=* Rgz call RgFzf(shellescape(<q-args>), {}, <bang>0)
       ]]
 
-      -- Search pattern across repository files
+      -- Explore files pattern across repository
       vim.cmd [[
         let s:current_path = ""
         function! FzfExplore(...)

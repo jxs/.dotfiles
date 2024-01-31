@@ -61,6 +61,7 @@
 /.config/GIMP
 /.config/Plexamp
 /.config/Slack
+/.config/Signal
 /.config/chromium
 /.config/discord
 /.config/pulse
@@ -104,6 +105,7 @@
 /.lein
 /.lesshst
 /.local/share
+/.local/state/nvim
 /.local/lib/python3*
 /.m2
 /.matplotlib
