@@ -26,6 +26,17 @@ return {
             },
           },
         },
+        -- TOML file settings
+        taplo = {
+          settings = {
+            evenBetterToml = {
+              formatter = {
+                arrayAutoExpand = false,
+                arrayAutoCollapse = false,
+              }
+            }
+          }
+        },
 
         -- Use rustaceanvim to setup rust-analyzer
         rust_analyzer = function()
@@ -106,7 +117,7 @@ return {
   {
     'mrcjkb/rustaceanvim',
     version = '^4',
-    lazy = true,     -- rustaceanvim will be loaded by mason-lspconfig
+    lazy = true, -- rustaceanvim will be loaded by mason-lspconfig
     config = false,
     init = function()
       vim.g.rustaceanvim = {

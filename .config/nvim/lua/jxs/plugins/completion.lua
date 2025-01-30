@@ -54,17 +54,6 @@ return {
             end
           end,
         },
-        formatting = {
-          fields = { 'abbr', 'kind', 'menu' },
-          format = function(entry, vim_item)
-            vim_item.menu = ({
-              buffer = "[Buffer]",
-              nvim_lsp = "[LSP]",
-              vsnip = "[VSnip]",
-            })[entry.source.name]
-            return vim_item
-          end
-        },
         sources = {
           { name = 'path' },
           { name = 'nvim_lsp' },
@@ -73,9 +62,7 @@ return {
           { name = 'buffer' },
         }
       })
-
       cmp.event:on('confirm_done', autopairs_cmp.on_confirm_done())
-
       cmp.setup.cmdline(':', {
         mapping = cmp.mapping.preset.cmdline(),
         sources = cmp.config.sources({

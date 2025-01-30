@@ -7,7 +7,6 @@ vim.opt.signcolumn = "yes" -- keep signcolumn on by default
 vim.opt.foldenable = false
 vim.opt.undofile = true
 vim.opt.undodir = vim.fn.stdpath('state') .. '/undo'
-vim.opt.shortmess:append({ c = true })   -- Avoid showing message extra message when using completion
 vim.opt.clipboard = 'unnamedplus'        -- Share clipboard with OS
 vim.opt.completeopt = 'menuone,noselect' -- Set completeopt to have a better completion experience
 vim.opt.termguicolors = true
@@ -16,6 +15,7 @@ vim.opt.swapfile = false
 vim.opt.jumpoptions = "stack"
 vim.opt.showmatch = true
 vim.opt.matchpairs:append('<:>')
+vim.opt.autochdir = true
 
 -- Decrease update time
 vim.opt.updatetime = 250
