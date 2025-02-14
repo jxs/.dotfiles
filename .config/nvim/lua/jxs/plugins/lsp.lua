@@ -33,6 +33,7 @@ return {
               formatter = {
                 arrayAutoExpand = false,
                 arrayAutoCollapse = false,
+                alignComments = false,
               }
             }
           }

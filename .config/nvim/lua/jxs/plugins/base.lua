@@ -50,7 +50,7 @@ return {
         active = {
           left = {
             { 'paste' },
-            { 'readonly', 'modified', 'filename', 'filetype', 'absolutepath', 'gitbranch' }
+            { 'readonly', 'modified', 'absolutepath', 'filetype', 'gitbranch' }
           },
           right = {
             { 'lineinfo' },

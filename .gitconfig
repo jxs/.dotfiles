@@ -1,6 +1,6 @@
 [user]
     name = João Oliveira
-    email = hello@jxs.pt
+	email = hello@jxs.pt
 [color]
 	ui = true
 [diff]
@@ -23,3 +23,8 @@
     hide-info = 1
 [rebase]
 	autosquash = true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
