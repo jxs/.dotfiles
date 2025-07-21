@@ -109,10 +109,10 @@ return {
       end
 
       mason.setup({
-        ensure_installed = vim.tbl_keys(opts.servers)
+        automatic_installation = false,
+        ensure_installed = vim.tbl_keys(opts.servers),
+        handlers = { setup_handlers }
       })
-
-      mason.setup_handlers(setup_handlers)
     end
   },
   {

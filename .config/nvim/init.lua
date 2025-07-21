@@ -72,8 +72,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
       vim.keymap.set('n', keys, func, { buffer = bufnr })
     end
 
-    nmap('gD', vim.lsp.buf.definition)
-    nmap('gd', vim.lsp.buf.implementation)
     nmap('gr', vim.lsp.buf.rename)
     nmap('ga', vim.lsp.buf.code_action)
     nmap('K', vim.lsp.buf.hover)

@@ -5,7 +5,7 @@ export COLORTERM=truecolor
 export ZSH_THEME="arrow"
 export EDITOR='nvim'
 export LANG=en_US.UTF-8
-export PATH=$PATH:/home/jxs/.cargo/bin
+export PATH=$PATH:/home/jxs/.cargo/bin:/home/jxs/.local/bin/
 
 # -- aliases
 alias cat='bat'

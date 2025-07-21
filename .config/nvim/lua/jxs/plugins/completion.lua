@@ -42,13 +42,13 @@ return {
             behavior = cmp.ConfirmBehavior.Replace,
             select = true
           }),
-          ['<Tab>'] = function(core, fallback)
+          ['<Tab>'] = function(core)
             if cmp.visible() then
               cmp.select_next_item()
             elseif vim.fn['vsnip#jumpable'](1) > 0 then
               vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<Plug>(vsnip-jump-next)', true, false, true))
             elseif has_words_before() then
-              cmp.mapping.complete()(core, fallback)
+              cmp.mapping.complete()(core)
             else
               vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<Tab>', true, true, true), 'n')
             end

@@ -180,6 +180,15 @@ for_window [app_id="gnome-system-monitor"] floating enable
 for_window [app_id="pavucontrol"] floating enable
 for_window [app_id="wmbluetui"] floating enable
 for_window [app_id="blueman-manager"] floating enable
+# Generated windows.
+for_window [title="(?:Open|Save) (?:File|Folder|As)"] floating enable;
+for_window [title="(?:Open|Save) (?:File|Folder|As)"] resize set 800 600
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_role="Preferences"] floating enable
+for_window [window_type="dialog"] floating enable
+for_window [window_type="menu"] floating enable
 
 set $opacity 0.95
 for_window [app_id="kitty"] opacity $opacity

@@ -2,6 +2,7 @@ return {
   {
     "nvim-telescope/telescope.nvim",
     branch = '0.1.x',
+    commit = 'b4da76be54691e854d3e0e02c36b0245f945c2c7',
     cmd = "Telescope",
     dependencies = {
       { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
@@ -12,7 +13,9 @@ return {
       { "<leader>f", "<cmd>Telescope git_files<cr>" },
       { "<leader>e", "<cmd>Telescope file_browser path=%:p:h <cr>", desc = "Browse buffer cwd" },
       { "<leader>b", "<cmd>Telescope buffers<cr>",                  desc = "Switch buffer" },
-      -- { "<leader>l", function() require("telescope.builtin").live_grep() end },
+      { "gD",        "<cmd>Telescope lsp_definitions<cr>",          desc = "Lsp type definitions" },
+      { "gd",        "<cmd>Telescope lsp_implementations<cr>",      desc = "Lsp type lsp_implementations" },
+      { "gR",        "<cmd>Telescope lsp_references<cr>",           desc = "Lsp type lsp_references" },
     },
     config = function()
       local telescope = require("telescope")
@@ -50,8 +53,9 @@ return {
             prompt_position = "bottom",
           },
           borderchars = {
-            prompt = { " ", " ", " ", " ", " ", " ", " ", " " },
-            preview = { "─", " ", " ", " ", "─", " ", " ", " " },
+            prompt = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+            preview = { "─", "│", "─", "│", "┬", "┐", "┘", "└" },
+            results = { "─", "", "─", "│", "┌", "─", "┘", "└" },
           },
           mappings = {
             i = {
@@ -72,8 +76,12 @@ return {
             path_display = format_path_display,
             sort_lastused = true,
             sort_mru = true,
-            previewer = false,
-          }
+          },
+          lsp_references = {
+            prompt_title = false,
+            results_title = false,
+            fname_width = 60,
+          },
         },
         extensions = {
           file_browser = {
@@ -87,7 +95,7 @@ return {
             },
 
           }
-        }
+        },
       })
 
       vim.api.nvim_create_autocmd("FileType", {
