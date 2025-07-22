@@ -20,23 +20,10 @@ return {
     config = function()
       local telescope = require("telescope")
       local actions = require("telescope.actions")
-      local themes = require("telescope.themes")
-      local strings = require("plenary.strings")
-      local utils = require("telescope.utils")
-
-      -- Display paths with basename first and path after
-      -- Example:
-      --   filename.txt  some/dir
-      local format_path_display = function(_, filename)
-        local tail = utils.path_tail(filename)
-        local path = strings.truncate(filename, #filename - #tail, "")
-
-        return string.format("%s\t\t%s", tail, utils.transform_path({ path_display = { "truncate" } }, path))
-      end
-
+      local themes = require("jxs/plugins/telescope/themes")
 
       telescope.setup({
-        defaults = themes.get_ivy({
+        defaults = themes.get_ivy_minimal({
           vimgrep_arguments = {
             'rg',
             '--no-heading',
@@ -52,10 +39,8 @@ return {
           layout_config = {
             prompt_position = "bottom",
           },
-          borderchars = {
-            prompt = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
-            preview = { "─", "│", "─", "│", "┬", "┐", "┘", "└" },
-            results = { "─", "", "─", "│", "┌", "─", "┘", "└" },
+          path_display = {
+            filename_first = true
           },
           mappings = {
             i = {
@@ -68,12 +53,10 @@ return {
             prompt_title = false,
             results_title = false,
             show_untracked = true,
-            path_display = format_path_display
           },
           buffers = {
             prompt_prefix = 'Buffer: ',
             prompt_title = false,
-            path_display = format_path_display,
             sort_lastused = true,
             sort_mru = true,
           },
@@ -96,16 +79,6 @@ return {
 
           }
         },
-      })
-
-      vim.api.nvim_create_autocmd("FileType", {
-        pattern = "TelescopeResults",
-        callback = function(ctx)
-          vim.api.nvim_buf_call(ctx.buf, function()
-            vim.fn.matchadd("TelescopeParent", "\t\t.*$")
-            vim.api.nvim_set_hl(0, "TelescopeParent", { link = "TelescopeResultsComment" })
-          end)
-        end,
       })
 
       telescope.load_extension("fzf")
