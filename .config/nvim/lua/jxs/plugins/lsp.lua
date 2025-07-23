@@ -86,9 +86,14 @@ return {
       -- configure diagnostics
       vim.diagnostic.config(vim.deepcopy(opts.diagnostics))
 
-      -- configure handlers
-      for handler_key, handler_opts in pairs(opts.handlers) do
-        vim.lsp.handlers[handler_key] = vim.lsp.with(unpack(handler_opts))
+      -- Override floating preview border for hover, signature help, etc
+      local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+      ---@diagnostic disable-next-line: duplicate-set-field
+      function vim.lsp.util.open_floating_preview(contents, syntax, float_opts, ...)
+        opts = float_opts or {}
+        opts.border = "single"
+
+        return orig_util_open_floating_preview(contents, syntax, opts, ...)
       end
 
       --

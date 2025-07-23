@@ -12,12 +12,12 @@ local patch_horizontal_layout = function(opts)
         return vim.tbl_deep_extend("force", layout, {
           prompt = {
             line = layout.prompt.line + 2,
-            borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" }
+            borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" }
           },
           results = {
             title = false,
             line = layout.results.line + 1,
-            borderchars = { "─", "│", "─", "│", "├", "┤", "╯", "╰" }
+            borderchars = { "─", "│", "─", "│", "├", "┤", "┘", "└" }
           },
         })
       end
@@ -27,18 +27,18 @@ local patch_horizontal_layout = function(opts)
         prompt = {
           line = layout.prompt.line + 2,
           width = layout.prompt.width + 1,
-          borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" }
+          borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" }
         },
         results = {
           title = false,
           line = layout.results.line + 1,
           width = layout.results.width + 1,
-          borderchars = { "─", "│", "─", "│", "├", "┤", "┴", "╰" }
+          borderchars = { "─", "│", "─", "│", "├", "┤", "┴", "└" }
         },
         preview = {
           line = layout.preview.line + 2,
           height = layout.preview.height - 1,
-          borderchars = { "─", "│", "─", "│", "┬", "╮", "╯", "┴" }
+          borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" }
         },
       })
     end
@@ -50,7 +50,7 @@ local patch_horizontal_layout = function(opts)
         return vim.tbl_deep_extend("force", layout, {
           prompt = {
             line = layout.prompt.line + 1,
-            borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" }
+            borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" }
           },
           results = {
             title = layout.prompt.title,
@@ -66,18 +66,18 @@ local patch_horizontal_layout = function(opts)
         prompt = {
           line = layout.prompt.line + 1,
           width = layout.prompt.width + 1,
-          borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" }
+          borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" }
         },
         results = {
           title = layout.prompt.title,
           height = layout.results.height + 1,
           line = layout.results.line + 1,
           width = layout.results.width + 1,
-          borderchars = { "─", "│", "─", "│", "╭", "┬", "┤", "├" }
+          borderchars = { "─", "│", "─", "│", "┌", "┬", "┤", "├" }
         },
         preview = {
           line = layout.preview.line + 1,
-          borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "┴" }
+          borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "┴" }
         },
       })
     end
@@ -116,4 +116,3 @@ M.get_dropdown = function(opts)
 end
 
 return M
-
