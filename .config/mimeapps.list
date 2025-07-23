@@ -14,20 +14,21 @@ image/jpeg=feh.desktop
 image/png=org.gnome.eog.desktop
 inode/directory=nemo.desktop
 message/rfc822=userapp-Thunderbird-ZRVV01.desktop
-text/html=vivaldi-stable.desktop
-x-scheme-handler/about=vivaldi-stable.desktop
+text/html=thorium-browser.desktop
+x-scheme-handler/about=thorium-browser.desktop
 x-scheme-handler/chrome=firefox.desktop
 x-scheme-handler/ftp=firefox.desktop
 x-scheme-handler/spotify=spotify.desktop
-x-scheme-handler/http=vivaldi-stable.desktop
-x-scheme-handler/https=vivaldi-stable.desktop
+x-scheme-handler/http=thorium-browser.desktop
+x-scheme-handler/https=thorium-browser.desktop
 x-scheme-handler/mailto=userapp-Thunderbird-ZRVV01.desktop
 x-scheme-handler/mid=userapp-Thunderbird-ZRVV01.desktop
 x-scheme-handler/tg=userapp-Telegram Desktop-EENTS0.desktop
 x-scheme-handler/trash=xfce4-file-manager.desktop
-x-scheme-handler/unknown=vivaldi-stable.desktop
+x-scheme-handler/unknown=thorium-browser.desktop
 image/webp=org.xfce.ristretto.desktop
 x-scheme-handler/webcal=vivaldi-stable.desktop
+x-scheme-handler/anytype=anytype.desktop
 
 [Added Associations]
 application/octet-stream=nvim.desktop;
@@ -45,5 +46,6 @@ text/html=firefox.desktop;
 image/webp=org.xfce.ristretto.desktop;
 image/png=org.xfce.ristretto.desktop;
 text/plain=vivaldi-stable.desktop;
+video/webm=mpv.desktop;
 
 [Removed Associations]
