@@ -6,7 +6,7 @@
         },
         "modules-left": ["sway/workspaces"],
         "modules-center": [],
-        "modules-right": ["disk", "cpu", "memory", "pulseaudio", "battery", "tray", "clock"],
+        "modules-right": ["disk", "cpu", "memory", "pulseaudio", "bluetooth", "tray", "clock"],
 
         "sway/workspaces": {
             "persistent_workspaces": true,
@@ -45,18 +45,8 @@
                     "critical": 90
                 },
                 "interval": 1,
-                "format": "",
+                "format": "",
                 "on-click": "gnome-system-monitor"
-            },
-            "battery": {
-                "states": {
-                    "ok": 99,
-                    "warning": 30,
-                    "critical": 15
-                },
-                "format": "{icon} {capacity}%",
-                "format-full": "",
-                "format-icons": ["", "", "", "", ""]
             },
             "pulseaudio": {
                 "format": "{icon}",
@@ -67,7 +57,14 @@
                     "default": ["", ""]
                 },
                 "scroll-step": 1,
-                "on-click": "pavucontrol"
+                "on-click": "GDK_DISABLE=vulkan pavucontrol"
+            },
+            "bluetooth": {
+                "controller": "terra",
+                "format-on": "",
+                "format-connected": "",
+                "format-off": "",
+                "on-click": "blueman-manager"
             },
             "clock": {
                 "tooltip-format": "{:%a, %d. %b  %H:%M}",

@@ -42,28 +42,17 @@ return {
             behavior = cmp.ConfirmBehavior.Replace,
             select = true
           }),
-          ['<Tab>'] = function(core, fallback)
+          ['<Tab>'] = function(core)
             if cmp.visible() then
               cmp.select_next_item()
             elseif vim.fn['vsnip#jumpable'](1) > 0 then
               vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<Plug>(vsnip-jump-next)', true, false, true))
             elseif has_words_before() then
-              cmp.mapping.complete()(core, fallback)
+              cmp.mapping.complete()(core)
             else
               vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<Tab>', true, true, true), 'n')
             end
           end,
-        },
-        formatting = {
-          fields = { 'abbr', 'kind', 'menu' },
-          format = function(entry, vim_item)
-            vim_item.menu = ({
-              buffer = "[Buffer]",
-              nvim_lsp = "[LSP]",
-              vsnip = "[VSnip]",
-            })[entry.source.name]
-            return vim_item
-          end
         },
         sources = {
           { name = 'path' },
@@ -73,9 +62,7 @@ return {
           { name = 'buffer' },
         }
       })
-
       cmp.event:on('confirm_done', autopairs_cmp.on_confirm_done())
-
       cmp.setup.cmdline(':', {
         mapping = cmp.mapping.preset.cmdline(),
         sources = cmp.config.sources({

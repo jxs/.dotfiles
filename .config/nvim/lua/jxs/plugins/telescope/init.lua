@@ -2,6 +2,7 @@ return {
   {
     "nvim-telescope/telescope.nvim",
     branch = '0.1.x',
+    commit = 'b4da76be54691e854d3e0e02c36b0245f945c2c7',
     cmd = "Telescope",
     dependencies = {
       { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
@@ -12,28 +13,17 @@ return {
       { "<leader>f", "<cmd>Telescope git_files<cr>" },
       { "<leader>e", "<cmd>Telescope file_browser path=%:p:h <cr>", desc = "Browse buffer cwd" },
       { "<leader>b", "<cmd>Telescope buffers<cr>",                  desc = "Switch buffer" },
-      -- { "<leader>l", function() require("telescope.builtin").live_grep() end },
+      { "gD",        "<cmd>Telescope lsp_definitions<cr>",          desc = "Lsp type definitions" },
+      { "gd",        "<cmd>Telescope lsp_implementations<cr>",      desc = "Lsp type lsp_implementations" },
+      { "gR",        "<cmd>Telescope lsp_references<cr>",           desc = "Lsp type lsp_references" },
     },
     config = function()
       local telescope = require("telescope")
       local actions = require("telescope.actions")
-      local themes = require("telescope.themes")
-      local strings = require("plenary.strings")
-      local utils = require("telescope.utils")
-
-      -- Display paths with basename first and path after
-      -- Example:
-      --   filename.txt  some/dir
-      local format_path_display = function(_, filename)
-        local tail = utils.path_tail(filename)
-        local path = strings.truncate(filename, #filename - #tail, "")
-
-        return string.format("%s\t\t%s", tail, utils.transform_path({ path_display = { "truncate" } }, path))
-      end
-
+      local themes = require("jxs/plugins/telescope/themes")
 
       telescope.setup({
-        defaults = themes.get_ivy({
+        defaults = themes.get_ivy_minimal({
           vimgrep_arguments = {
             'rg',
             '--no-heading',
@@ -49,9 +39,8 @@ return {
           layout_config = {
             prompt_position = "bottom",
           },
-          borderchars = {
-            prompt = { " ", " ", " ", " ", " ", " ", " ", " " },
-            preview = { "─", " ", " ", " ", "─", " ", " ", " " },
+          path_display = {
+            filename_first = true
           },
           mappings = {
             i = {
@@ -64,16 +53,18 @@ return {
             prompt_title = false,
             results_title = false,
             show_untracked = true,
-            path_display = format_path_display
           },
           buffers = {
             prompt_prefix = 'Buffer: ',
             prompt_title = false,
-            path_display = format_path_display,
             sort_lastused = true,
             sort_mru = true,
-            previewer = false,
-          }
+          },
+          lsp_references = {
+            prompt_title = false,
+            results_title = false,
+            fname_width = 60,
+          },
         },
         extensions = {
           file_browser = {
@@ -87,17 +78,7 @@ return {
             },
 
           }
-        }
-      })
-
-      vim.api.nvim_create_autocmd("FileType", {
-        pattern = "TelescopeResults",
-        callback = function(ctx)
-          vim.api.nvim_buf_call(ctx.buf, function()
-            vim.fn.matchadd("TelescopeParent", "\t\t.*$")
-            vim.api.nvim_set_hl(0, "TelescopeParent", { link = "TelescopeResultsComment" })
-          end)
-        end,
+        },
       })
 
       telescope.load_extension("fzf")

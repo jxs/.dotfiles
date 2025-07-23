@@ -41,6 +41,7 @@ return {
       ]]
     end
   },
+  { 'itchyny/vim-gitbranch' },
   {
     'itchyny/lightline.vim',
     init = function()
@@ -49,7 +50,7 @@ return {
         active = {
           left = {
             { 'paste' },
-            { 'readonly', 'filename', 'relativepath', 'filetype', 'modified' }
+            { 'readonly', 'modified', 'absolutepath', 'filetype', 'gitbranch' }
           },
           right = {
             { 'lineinfo' },
