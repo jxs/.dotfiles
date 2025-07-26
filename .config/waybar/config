@@ -6,7 +6,7 @@
         },
         "modules-left": ["sway/workspaces"],
         "modules-center": [],
-        "modules-right": ["disk", "cpu", "memory", "pulseaudio", "bluetooth", "tray", "clock"],
+        "modules-right": ["disk", "cpu", "memory", "pulseaudio", "battery", "bluetooth", "tray", "clock"],
 
         "sway/workspaces": {
             "persistent_workspaces": true,
@@ -45,8 +45,19 @@
                     "critical": 90
                 },
                 "interval": 1,
-                "format": "",
+                "format": "",
                 "on-click": "gnome-system-monitor"
+            },
+            "battery": {
+                "states": {
+                    "ok": 99,
+                    "warning": 30,
+                    "critical": 15
+                },
+                "format": "{icon}",
+                "format-full": "",
+                "format-icons": ["", "", "", "", ""],
+                "tooltip-format": "capacity: {capacity}% \n{timeTo}"
             },
             "pulseaudio": {
                 "format": "{icon}",
@@ -67,7 +78,7 @@
                 "on-click": "blueman-manager"
             },
             "clock": {
-                "tooltip-format": "{:%a, %d. %b  %H:%M}",
+                "format-tooltip": "{:%a, %d. %b  %H:%M}",
                 "on-click": "gsimplecal"
             },
             "tray": {
