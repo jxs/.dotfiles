@@ -38,11 +38,6 @@ return {
             }
           }
         },
-
-        -- Use rustaceanvim to setup rust-analyzer
-        rust_analyzer = function()
-          require('rustaceanvim')
-        end
       },
       inlay_hints = {
         enabled = true,
@@ -86,14 +81,9 @@ return {
       -- configure diagnostics
       vim.diagnostic.config(vim.deepcopy(opts.diagnostics))
 
-      -- Override floating preview border for hover, signature help, etc
-      local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
-      ---@diagnostic disable-next-line: duplicate-set-field
-      function vim.lsp.util.open_floating_preview(contents, syntax, float_opts, ...)
-        opts = float_opts or {}
-        opts.border = "single"
-
-        return orig_util_open_floating_preview(contents, syntax, opts, ...)
+      -- configure handlers
+      for handler_key, handler_opts in pairs(opts.handlers) do
+        vim.lsp.handlers[handler_key] = vim.lsp.with(unpack(handler_opts))
       end
 
       --
@@ -123,8 +113,7 @@ return {
   {
     'mrcjkb/rustaceanvim',
     version = '^4',
-    lazy = true, -- rustaceanvim will be loaded by mason-lspconfig
-    config = false,
+    ft = 'rust',
     init = function()
       vim.g.rustaceanvim = {
         -- LSP configuration
@@ -132,7 +121,9 @@ return {
           default_settings = {
             -- rust-analyzer language server configuration
             ['rust-analyzer'] = {
-              cargo = { allFeatures = true }
+              cargo = {
+                allFeatures = true,
+              },
             },
           },
         },
