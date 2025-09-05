@@ -17,7 +17,7 @@ window {
 #workspaces button {
     background: transparent;
     font-size: 20px;
-    margin: 0 -10px;
+    margin: 0 1px;
 }
 
 #workspaces button.focused {

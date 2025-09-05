@@ -34,7 +34,6 @@ title_align center
 # Font for window titles.
 font pango: Liberation Sans 12
 # set background color
-# output * bg #1d1f21 solid_color
 output * background "~/.config/sway/lunar.png" fill
 # focus window on activation
 focus_on_window_activation focus
@@ -141,7 +140,9 @@ bindsym $mod+Shift+r exec swaymsg reload
 # resize window
 bindsym $mod+r mode "resize"
 # exit sway (logs you out of your X session)
-bindsym $mod+Shift+e exec "swaynag -t warning -m 'exit?' -B 'Yes' 'swaymsg exit'"
+bindsym $mod+Shift+e exec \\
+"swaynag --background=#1d1f21 --text=#ffffff --button-background=#1d1f21 --button-text=#ffffff --button-border-size=0 --border-bottom-size=0 -m 'exit?' -B 'Yes' 'swaymsg exit'"
+
 # lock
 bindsym $mod+l exec ~/.config/sway/lock.sh
 # suspend
@@ -222,7 +223,7 @@ client.placeholder      $base01 $base01 $base04 $base01 $base01
 set $gnome-schema org.gnome.desktop.interface
 
 exec_always {
-    gsettings set $gnome-schema gtk-theme 'Material-Black-Blueberry'
-    gsettings set $gnome-schema icon-theme 'ePapirus'
+    gsettings set $gnome-schema gtk-theme 'Silvery-GTK'
+    gsettings set $gnome-schema icon-theme 'Vimix-black'
     gsettings set $gnome-schema cursor-theme 'Breeze'
 }
