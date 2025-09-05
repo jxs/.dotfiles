@@ -58,8 +58,8 @@ input type:touch {
 }
 
 # KEYBINDINGS
-bindsym XF86AudioRaiseVolume exec ~/.config/i3/volume.sh up #increase sound volume
-bindsym XF86AudioLowerVolume exec ~/.config/i3/volume.sh down #decrease sound volume
+bindsym XF86AudioRaiseVolume exec ~/.config/sway/volume.sh up #increase sound volume
+bindsym XF86AudioLowerVolume exec ~/.config/sway/volume.sh down #decrease sound volume
 bindsym XF86AudioMute exec ~/.config/sway/volume.sh toggle
 bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 bindsym XF86MonBrightnessUp exec ~/.config/sway/brightness.sh up
@@ -167,11 +167,6 @@ mode "resize" {
 floating_maximum_size 1200 x 800
 gaps inner 8
 
-# APPLICATIONS WORKSPACES
-assign [title="Vivaldi"] 2
-assign [class="thunderbird"] 2
-assign [title="Telegram"] 3
-
 # FLOATING WINDOWS
 for_window [app_id="Thunar"] floating enable
 for_window [app_id="thunar"] floating enable
@@ -221,9 +216,3 @@ client.urgent           $base01 $base01 $base01 $base01 $base01
 client.placeholder      $base01 $base01 $base04 $base01 $base01
 
 set $gnome-schema org.gnome.desktop.interface
-
-exec_always {
-    gsettings set $gnome-schema gtk-theme 'Silvery-GTK'
-    gsettings set $gnome-schema icon-theme 'Vimix-black'
-    gsettings set $gnome-schema cursor-theme 'Breeze'
-}
