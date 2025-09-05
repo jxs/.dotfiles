@@ -2,9 +2,6 @@
 
 set $mod Mod4
 
-# start libinput gestures
-exec "libinput-gestures-setup start"
-
 # start notifications
 exec mako
 exec "eval $(ssh-agent)"
@@ -59,8 +56,8 @@ input type:touch {
 }
 
 # KEYBINDINGS
-bindsym XF86AudioRaiseVolume exec ~/.config/i3/volume.sh up #increase sound volume
-bindsym XF86AudioLowerVolume exec ~/.config/i3/volume.sh down #decrease sound volume
+bindsym XF86AudioRaiseVolume exec ~/.config/sway/volume.sh up #increase sound volume
+bindsym XF86AudioLowerVolume exec ~/.config/sway/volume.sh down #decrease sound volume
 bindsym XF86AudioMute exec ~/.config/sway/volume.sh toggle
 bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 bindsym XF86MonBrightnessUp exec ~/.config/sway/brightness.sh up
@@ -141,7 +138,9 @@ bindsym $mod+Shift+r exec swaymsg reload
 # resize window
 bindsym $mod+r mode "resize"
 # exit sway (logs you out of your X session)
-bindsym $mod+Shift+e exec "swaynag -t warning -m 'exit?' -B 'Yes' 'swaymsg exit'"
+bindsym $mod+Shift+e exec \\
+"swaynag --background=#1d1f21 --text=#ffffff --button-background=#1d1f21 --button-text=#ffffff --button-border-size=0 --border-bottom-size=0 -m 'exit?' -B 'Yes' 'swaymsg exit'"
+
 # lock
 bindsym $mod+l exec ~/.config/sway/lock.sh
 # suspend
@@ -165,11 +164,6 @@ mode "resize" {
 # You can also use any non-zero value if you'd like to have a border
 floating_maximum_size 1200 x 800
 gaps inner 8
-
-# APPLICATIONS WORKSPACES
-assign [title="Vivaldi"] 2
-assign [class="thunderbird"] 2
-assign [title="Telegram"] 3
 
 # FLOATING WINDOWS
 for_window [app_id="Thunar"] floating enable
@@ -218,11 +212,3 @@ client.focused_inactive $base01 $base01 $base04 $base02 $base01
 client.unfocused        $base01 $base01 $base04 $base01 $base01
 client.urgent           $base01 $base01 $base01 $base01 $base01
 client.placeholder      $base01 $base01 $base04 $base01 $base01
-
-set $gnome-schema org.gnome.desktop.interface
-
-exec_always {
-    gsettings set $gnome-schema gtk-theme 'Material-Black-Blueberry'
-    gsettings set $gnome-schema icon-theme 'ePapirus'
-    gsettings set $gnome-schema cursor-theme 'Breeze'
-}

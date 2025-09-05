@@ -1,88 +1,69 @@
 {
-    "position": "top",
-        "height": 32,
-        "sway/window": {
-        "max-length": 50
-        },
-        "modules-left": ["sway/workspaces"],
-        "modules-center": [],
-        "modules-right": ["disk", "cpu", "memory", "pulseaudio", "battery", "bluetooth", "tray", "clock"],
-
-        "sway/workspaces": {
-            "persistent_workspaces": true,
-            "disable-scroll": true,
-            "format": "{icon}",
-            "format-icons": {
-                "1": "",
-                "2": "",
-                "3": "",
-            }
-        },
-        "wlr/taskbar": {
-            "format": "{icon} {title}",
-            "on-click": "activate",
-        },
-        "disk": {
-            "interval": 5,
-            "format": "",
-            "path": "/",
-            "on-click": "nautilus",
-            "tooltip-format": "{free} free of {total}"
-        },
-            "cpu": {
-                "states": {
-                    "warning": 70,
-                    "critical": 90
-                },
-                "interval": 1,
-                "format": "",
-                "format-tooltip": "{usage}%",
-                "max-length": 10
-            },
-            "memory": {
-                "states": {
-                    "warning": 70,
-                    "critical": 90
-                },
-                "interval": 1,
-                "format": "",
-                "on-click": "gnome-system-monitor"
-            },
-            "battery": {
-                "states": {
-                    "ok": 99,
-                    "warning": 30,
-                    "critical": 15
-                },
-                "format": "{icon}",
-                "format-full": "",
-                "format-icons": ["", "", "", "", ""],
-                "tooltip-format": "capacity: {capacity}% \n{timeTo}"
-            },
-            "pulseaudio": {
-                "format": "{icon}",
-                "format-bluetooth": "{icon}",
-                "format-muted": "",
-                "format-icons": {
-                    "headphone": "",
-                    "default": ["", ""]
-                },
-                "scroll-step": 1,
-                "on-click": "GDK_DISABLE=vulkan pavucontrol"
-            },
-            "bluetooth": {
-                "controller": "terra",
-                "format-on": "",
-                "format-connected": "",
-                "format-off": "",
-                "on-click": "blueman-manager"
-            },
-            "clock": {
-                "format-tooltip": "{:%a, %d. %b  %H:%M}",
-                "on-click": "gsimplecal"
-            },
-            "tray": {
-                "icon-size": 22,
-                "spacing": 10
-            }
+   "position":"top",
+   "height":32,
+   "sway/window":{
+      "max-length":50
+   },
+   "modules-left":[
+      "sway/workspaces"
+   ],
+   "modules-center":[
+      
+   ],
+   "modules-right":[
+      "pulseaudio",
+      "bluetooth",
+      "tray",
+      "clock"
+   ],
+   "sway/workspaces":{
+      "persistent_workspaces":true,
+      "disable-scroll":true,
+      "format":"{icon}",
+      "format-icons":{
+         "1":"",
+         "2":"",
+         "3":""
+      }
+   },
+   "wlr/taskbar":{
+      "format":"{icon} {title}",
+      "on-click":"activate"
+   },
+   "disk":{
+      "interval":5,
+      "format":"",
+      "path":"/",
+      "on-click":"nautilus",
+      "tooltip-format":"{free} free of {total}"
+   },
+   "pulseaudio":{
+      "format":"{icon}",
+      "format-bluetooth":"{icon}",
+      "format-muted":"",
+      "format-icons":{
+         "headphone":"",
+         "default":[
+            "",
+            ""
+         ]
+      },
+      "scroll-step":1,
+      "on-click":"GDK_DISABLE=vulkan pavucontrol"
+   },
+   "bluetooth":{
+      "controller":"terra",
+      "format-on":"",
+      "format-connected":"",
+      "format-off":"",
+      "on-click":"blueman-manager"
+   },
+   "clock":{
+      "format-tooltip":"{:%a, %d. %b  %H:%M}",
+      "on-click":"gsimplecal"
+   },
+   "tray":{
+      "icon-size":22,
+      "spacing":10
+   }
 }
