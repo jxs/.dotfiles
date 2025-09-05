@@ -38,11 +38,6 @@ return {
             }
           }
         },
-
-        -- Use rustaceanvim to setup rust-analyzer
-        rust_analyzer = function()
-          require('rustaceanvim')
-        end
       },
       inlay_hints = {
         enabled = true,
@@ -118,8 +113,7 @@ return {
   {
     'mrcjkb/rustaceanvim',
     version = '^4',
-    lazy = true, -- rustaceanvim will be loaded by mason-lspconfig
-    config = false,
+    ft = 'rust',
     init = function()
       vim.g.rustaceanvim = {
         -- LSP configuration
@@ -127,7 +121,9 @@ return {
           default_settings = {
             -- rust-analyzer language server configuration
             ['rust-analyzer'] = {
-              cargo = { allFeatures = true }
+              cargo = {
+                allFeatures = true,
+              },
             },
           },
         },
