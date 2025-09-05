@@ -18,10 +18,11 @@ window {
     background: transparent;
     font-size: 20px;
     margin: 0 1px;
+    color: rgba(212, 216, 216, 0.64);
 }
 
 #workspaces button.focused {
-    color: rgba(217, 216, 216, 1);
+    color: white;
 }
 
 #mode, #battery, #cpu, #disk, #clock, #memory, #network, #pulseaudio, #tray {
