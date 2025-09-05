@@ -1,178 +1,33 @@
-# non-dot files
-/[^.]*
-!/bin
+# Ignore everything by default
+/*
+/.config/*
 
-# Don't include files with sensitive data
-/.zshrc-secrets
 
-# iJunk
-.DS_Store
-.MacOSX
-.Trash
+# Allow .gitignore and readme
+!.gitignore
+!README.md
 
-# Node stuff
-/.v8flags.*
+# Dotfiles to keep
+!.zshrc
+!.aliases
+!.gitconfig
+!.gitmodules
 
-# ZSH junk
-/.zcompdump*
-/.zsh-update
+# Config directories to keep
+!.config/
+!.config/htop/
+!.config/gtk-2.0/
+!.config/gtk-3.0/
+!.config/gtk-4.0/
+!.config/kitty/
+!.config/mako/
+!.config/nvim/
+!.config/rofi/
+!.config/sway/
+!.config/waybar/
+!.config/zathura/
 
-# Python virtual envs
-/.virtualenvs
-
-# Ruby virtual envs
-/.rvm
-
-# History files
-/.*history
-
-# Dotfiles
-/*Drobo*
-/.*-dropbox-token
-/.CFUserTextEncoding
-/.Xauthority
-/.XcodeDefaultPerspective.mode1v3
-/.ackrc
-/.adobe
-/.alvzfmtrc
-/.android
-/.ansible/
-/.ansible_galaxy
-/.ansible_roles/
-/.appcfg_cookies
-/.appcfg_nag
-/.ascii.io
-/.atom/
-/.autoenv
-/.autoenv_authorized
-/.autoenv_authorized.tmp
-/.aws/
-/.babel.json
-/.belastingdienst.nl
-/.bi_li3
-/.bower
-/.bup
-/.bzr.log
-/.cache
-/.cargo
-/.cassandra
-/.chef
-/.config/BraveSoftware
-/.config/GIMP
-/.config/Plexamp
-/.config/Slack
-/.config/Signal
-/.config/chromium
-/.config/discord
-/.config/pulse
-/.config/spotify
-/.config/vivaldi
-/.config/vivaldi-snapshot
-/.config/whatsapp-nativefier-*
-/.config_b
-/.cookiecutters
-/.cups
-/.dbshell
-/.devpi
-/.direnvrc
-/.docker/
-/.dropbox
-/.dropbox-master
-/.dts/
-/.dvdcss
-/.eaglerc
-/.emacs.d
-/.flow-typed/
-/.ftcurlish.json
-/.gem
-/.gh-credentials
-/.gist
-/.gist-vim
-/.gitconfig
-/.gitk
-/.gnupg
-/.go
-/.grc
-/.heroku
-/.httpie
-/.ipython
-/.irssi
-/.iterm2
-/.js
-/.jupyter/
-/.keybase-installer
-/.kodi
-/.lein
-/.lesshst
-/.local/share
-/.local/state/nvim
-/.local/lib/python3*
-/.m2
-/.matplotlib
-/.mitmproxy
-/.mongorc.js
-/.mozilla
-/.msgsrc
-/.my.cnf
-/.netrc
-/.ngrok2/
-/.njxnqxgn
-/.node-gyp/
-/.npm
-/.npmrc
-/.oh-my-zsh
-/.parallel
-/.password-store
-/.pip
-/.pip-accel
-/.pip-tools
-/.pki
-/.pm2/
-/.pre-commit/
-/.profile
-/.purple
-/.pyenv/
-/.pylint.d
-/.pypirc
-/.python-eggs
-/.pythonhist
-/.pythonrc.py
-/.pythonz
-/.resty
-/.ri
-/.rnd
-/.rustup
-/.s3cfg
-/.srl
-/.ssh
-/.subversion
-/.thunderbird
-/.tmux.conf
-/.tox
-/.tsd-cache/
-/.ttytterkey
-/.vagrant.d
-/.vim*
-/.vscode/
-/.wget-hsts
-/.xkb
-/.yarn*
-/.yesgraph-*
-/.z*
-/Music
-
-# Directories
-Projects
-
-# Vim generated documentation
-/doc/tags
-
-# Powerline-specific cruft that isn't ignored in their own plugin
-Powerline_*.cache
-
-# Postgres stuff
-/.pg*
-
-# SimpleContacts
-/bin/*-db
-
+# Theme files
+!.themes/
+!.themes/Silvery-GTK/
+!.icons/
