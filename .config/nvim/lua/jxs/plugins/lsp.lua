@@ -10,8 +10,6 @@ return {
     },
     opts = {
       -- LSP servers to automatically install and their configs
-      -- if config is a function the default handler will be override by this function
-      -- see :h mason-lspconfig-automatic-server-setup
       servers = {
         -- LuaLS options
         lua_ls = {
@@ -61,14 +59,6 @@ return {
           max_width = 80,
         },
       },
-      handlers = {
-        ["textDocument/signatureHelp"] = {
-          vim.lsp.handlers.signatureHelp, { border = 'rounded' }
-        },
-        ["textDocument/hover"]         = {
-          vim.lsp.handlers.hover, { border = 'rounded' }
-        }
-      }
     },
     config = function(_, opts)
       local mason = require('mason-lspconfig')
@@ -81,32 +71,19 @@ return {
       -- configure diagnostics
       vim.diagnostic.config(vim.deepcopy(opts.diagnostics))
 
-      -- configure handlers
-      for handler_key, handler_opts in pairs(opts.handlers) do
-        vim.lsp.handlers[handler_key] = vim.lsp.with(unpack(handler_opts))
-      end
 
-      --
-      local setup_handlers = {
-        function(server_name)
-          local server_opts = vim.tbl_deep_extend("force", {
-            capabilities = capabilities
-          }, opts.servers[server_name] or {})
+      -- setup LSP servers
+      vim.lsp.config("*", { capabilities = capabilities })
 
-          require('lspconfig')[server_name].setup(server_opts)
-        end,
-      }
-
-      for server, server_opts in pairs(opts.servers) do
-        if type(server_opts) == 'function' then
-          setup_handlers[server] = server_opts
-        end
+      for server_name, server_opts in pairs(opts.servers) do
+        vim.lsp.config(server_name, server_opts)
       end
 
       mason.setup({
-        automatic_installation = false,
+        automatic_enable = {
+          exclude = { "rust_analyzer" }
+        },
         ensure_installed = vim.tbl_keys(opts.servers),
-        handlers = { setup_handlers }
       })
     end
   },
